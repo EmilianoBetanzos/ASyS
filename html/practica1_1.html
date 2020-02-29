@@ -1,0 +1,440 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Practica 1 Se&ntilde;ales en tiempo continuo</title><meta name="generator" content="MATLAB 9.7"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-02-14"><meta name="DC.source" content="practica1_1.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Practica 1 Se&ntilde;ales en tiempo continuo</h1><!--introduction--><p>Integrantes:</p><div><ul><li>Betanzos Ferrando Melvin Emiliano</li></ul></div><div><ul><li>Garc&iacute;a becerril Luis &Aacute;ngel Ian</li></ul></div><div><ul><li>Rosales Perez Paola Monserrat</li></ul></div><p>Grupo: 2MV1</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Objetivos:</a></li><li><a href="#2">Introduccion</a></li><li><a href="#3">Problema 1</a></li><li><a href="#4">M1.1 Funciones en linea</a></li><li><a href="#5">M1.1 Parte 1</a></li><li><a href="#6">M1.1 parte 2</a></li><li><a href="#7">M1.2 Operadores de relacion y escalon unitario</a></li><li><a href="#8">M1.2 Parte 1</a></li><li><a href="#9">M1.2 Parte 2</a></li><li><a href="#10">M1.2 Parte 3</a></li><li><a href="#11">M1.3  Visualizacion de operadores con variables independientes.</a></li><li><a href="#12">M1.3 Parte 1</a></li><li><a href="#13">M1.3 Parte 2</a></li><li><a href="#14">M1.3 Parte 3</a></li><li><a href="#15">M1.4 Integracion numerica y energia estimada.</a></li><li><a href="#16">M1.4 Parte 1</a></li><li><a href="#17">M1.4 Parte 2</a></li><li><a href="#18">M1.4 Parte 3</a></li><li><a href="#19">Problema 2</a></li><li><a href="#20">Problema numero 2</a></li><li><a href="#21">Parte 1</a></li><li><a href="#22">Parte 2</a></li><li><a href="#23">Parte 3</a></li><li><a href="#24">Parte 4</a></li><li><a href="#25">Parte 5</a></li><li><a href="#26">Parte 6</a></li><li><a href="#27">Problema 3</a></li><li><a href="#28">Formula 1</a></li><li><a href="#29">Formula 2</a></li><li><a href="#30">Formula 3</a></li></ul></div><h2 id="1">Objetivos:</h2><h2 id="2">Introduccion</h2><h2 id="3">Problema 1</h2><p>Realiza los problemas de la seccion M1.1 a M1.4 de lathi.</p><h2 id="4">M1.1 Funciones en linea</h2><h2 id="5">M1.1 Parte 1</h2><p>si tomamos en cuenta  la siguiente funcion f(t) = e^?t cos(2?t). el codigo en matlab seria el siguiente:</p><pre class="codeinput">f = @(t) exp(-t).*cos(2*pi.*(t));
+t = (-2:2);
+f(t);
+plot(t,f(t));
+xlabel (<span class="string">'t'</span>);
+ylabel(<span class="string">'f(t)'</span>);
+grid;
+</pre><img vspace="5" hspace="5" src="practica1_1_01.png" alt=""> <h2 id="6">M1.1 parte 2</h2><p>como se puede observar en la grafica, MATLAB une los puntos del vector t con el resultado que arroja la funcion, creando una representacion no muy exacta, por lo cual se debe de definir un vector t con intervalos mas peque&ntilde;os para que sean mas puntosy por lo tanto este mas definida.</p><pre class="codeinput">f = @(t) exp(-t).*cos(2*pi.*(t));
+t=(-2:0.01:2);
+plot(t,f(t));
+xlabel (<span class="string">'t'</span>);
+ylabel(<span class="string">'f(t)'</span>);
+grid;
+</pre><img vspace="5" hspace="5" src="practica1_1_02.png" alt=""> <h2 id="7">M1.2 Operadores de relacion y escalon unitario</h2><h2 id="8">M1.2 Parte 1</h2><p>Dentro del Matlab existen varios operadores los cuales se encargan de relacionar o realizar operaciones en este caso son: &lt;, &gt;, &lt;=, &gt;=, ==, y ~=. El siguiente ejemplo es un escalon unitario, definido de la siguiente manera:</p><pre class="codeinput">u=@(t) (t&gt;=0);
+t = (-2:2);
+plot (t,u(t));
+xlabel(<span class="string">'t'</span>);
+ylabel(<span class="string">'u(t)'</span>);
+</pre><img vspace="5" hspace="5" src="practica1_1_03.png" alt=""> <h2 id="9">M1.2 Parte 2</h2><p>En la grafica anterior se presenta el problema de que el escalon unitario presenta una inclinacion, esto puede ser solucionado con el comando axis. De igual manera la definicion no es muy exacta por lo cual se pueden agregar mas numeros al vector t.</p><pre class="codeinput">u=@(t) (t&gt;=0);
+t = (-2:0.01:2);
+plot (t,u(t));
+xlabel(<span class="string">'t'</span>);
+ylabel(<span class="string">'u(t)'</span>);
+axis ([-2 2 -0.1 1.1]);
+</pre><img vspace="5" hspace="5" src="practica1_1_04.png" alt=""> <h2 id="10">M1.2 Parte 3</h2><p>MATLAB tambien contiene relaciones y,o,negaciones; representadas como &amp; | y ~ respectivamente, el siguiente ejemplo es un pulso representado con la ecuacion p(t) =u(t)-u(t-1).</p><pre class="codeinput">p =@(t) (t&gt;=0) &amp; (t&lt;1);
+t = (-1:0.01:2);
+plot(t,p(t));
+xlabel(<span class="string">'t'</span>);
+ylabel(<span class="string">'p(t)=u(t)-u(t-1)'</span>);
+axis ([-1 2 -.1 1.1]);
+</pre><img vspace="5" hspace="5" src="practica1_1_05.png" alt=""> <h2 id="11">M1.3  Visualizacion de operadores con variables independientes.</h2><h2 id="12">M1.3 Parte 1</h2><p>Para poder multiplicar un vector en cuanto a formulas en matlab se ultiliza la notacion .*, en el siguiente ejemplo se estara grtaficando la funcion :g(t) = f(t)u(t) = e-t cos(2?t)u(t)</p><pre class="codeinput">g = @(t) (exp(-t).*cos(2*pi*t).*(t&gt;=0));
+t = (-2:0.01:2);
+plot(t,g(2*t+1));
+xlabel(<span class="string">'t'</span>);
+ylabel(<span class="string">'g(2t+1)'</span>);
+grid;
+</pre><img vspace="5" hspace="5" src="practica1_1_06.png" alt=""> <h2 id="13">M1.3 Parte 2</h2><p>en este casi graficaremos la misma funcion anterior pero con g(?t + 1) en el intervalo (-2 ? t ? 2).</p><pre class="codeinput">g = @(t) (exp(-t).*cos(2*pi*t).*(t&gt;=0));
+t = (-2:0.01:2);
+plot(t,g(-t+1));
+xlabel(<span class="string">'t'</span>);
+ylabel(<span class="string">'g(-t+1)'</span>);
+grid;
+</pre><img vspace="5" hspace="5" src="practica1_1_07.png" alt=""> <h2 id="14">M1.3 Parte 3</h2><p>Ahora graficaremos la funcion h(t) =g(2t + 1) + g(-t + 1) en el mismo intervalo</p><pre class="codeinput">g = @(t) (exp(-t).*cos(2*pi*t).*(t&gt;=0));
+t = (-2:0.01:2);
+plot(t,g(2*t+1) +g(-t+1));
+xlabel(<span class="string">'t'</span>);
+ylabel(<span class="string">'h(t)'</span>);
+grid;
+</pre><img vspace="5" hspace="5" src="practica1_1_08.png" alt=""> <h2 id="15">M1.4 Integracion numerica y energia estimada.</h2><h2 id="16">M1.4 Parte 1</h2><p>Considerando la se&ntilde;al x(t) = e?t(u(t) ? u(t ? 1)). la energia se expresa de la siguiente manera: Ex = integradl de ??? |x(t)|2 dt = integral de 10 e?2t La cual se representa en MATLAB como:</p><pre class="codeinput">x =@(t) exp(-t).*((t&gt;=0)&amp;(t&lt;1));
+t = (0:0.01:1);
+E_x =sum(x(t).*x(t)*0.01);
+E_x
+</pre><pre class="codeoutput">
+E_x =
+
+    0.4367
+
+</pre><h2 id="17">M1.4 Parte 2</h2><p>Para poder integrar de manera mas precisa se utiliza el operador quad con una funcion que explique la integral como se muestra a continuacion:</p><pre class="codeinput">x_squared =@(t) exp(-2*t).*((t&gt;=0)&amp;(t&gt;1));
+E_x = quad(x_squared,0,1);
+E_x
+</pre><pre class="codeoutput">
+E_x =
+
+     0
+
+</pre><h2 id="18">M1.4 Parte 3</h2><p>A continuacion usaremos una nueva funcion para definirla de manera mas acertiva.</p><pre class="codeinput">g_squared =@(t) exp(-2*t).*(cos(2*pi*t).*2).*(t&gt;=0);
+t = (0:0.001:100);
+E_g = sum(g_squared(t)*0.001);
+E_g
+</pre><pre class="codeoutput">
+E_g =
+
+    0.0930
+
+</pre><h2 id="19">Problema 2</h2><p>Resuelve el problema 1.2.2 usando las herramientas Problema anterior.</p><h2 id="20">Problema numero 2</h2><h2 id="21">Parte 1</h2><p>a continuacion definirimos la grafica original para despues poder meter un corrimiento segun lo indica el problema.</p><pre class="codeinput">x=@(t) (-t).*(t&gt;=-4)&amp; (t&lt;=0) ;
+y=@(t) (t).*(t&lt;=2) &amp; (t&gt;=-4);
+t= (-4:1:2);
+hold <span class="string">off</span>
+plot (t,y(t));
+hold <span class="string">on</span>
+plot (t,x(t));
+hold <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="practica1_1_09.png" alt=""> <h2 id="22">Parte 2</h2><p>Ahora graficaremos con x(t-4)</p><pre class="codeinput">x=@(t) (-t).*(t&gt;=-4)&amp; (t&lt;=0) ;
+y=@(t) (t).*(t&lt;=2) &amp; (t&gt;=-4);
+t= (-4:1:2);
+hold <span class="string">off</span>
+plot (t,y(t-4));
+hold <span class="string">on</span>
+plot (t,x(t-4));
+hold <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="practica1_1_10.png" alt=""> <h2 id="23">Parte 3</h2><p>Ahora se graficara con x(t/1.5)</p><pre class="codeinput">x=@(t) (-t).*(t&gt;=-4)&amp; (t&lt;=0) ;
+y=@(t) (t).*(t&lt;=2) &amp; (t&gt;=-4);
+t= (-4:1:2);
+hold <span class="string">off</span>
+plot (t,y(t/1.5));
+hold <span class="string">on</span>
+plot (t,x(t/1.5));
+hold <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="practica1_1_11.png" alt=""> <h2 id="24">Parte 4</h2><p>Ahora se graficara con x(-t)</p><pre class="codeinput">x=@(t) (-t).*(t&gt;=-4)&amp; (t&lt;=0) ;
+y=@(t) (t).*(t&lt;=2) &amp; (t&gt;=-4);
+t= (-4:1:2);
+hold <span class="string">off</span>
+plot (t,y(-t));
+hold <span class="string">on</span>
+plot (t,x(-t));
+hold <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="practica1_1_12.png" alt=""> <h2 id="25">Parte 5</h2><p>Ahora se graficara con x(2t-4)</p><pre class="codeinput">x=@(t) (-t).*(t&gt;=-4)&amp; (t&lt;=0) ;
+y=@(t) (t).*(t&lt;=2) &amp; (t&gt;=-4);
+t= (-4:1:2);
+hold <span class="string">off</span>
+plot (t,y(2*t-4));
+hold <span class="string">on</span>
+plot (t,x(2*t-4));
+hold <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="practica1_1_13.png" alt=""> <h2 id="26">Parte 6</h2><p>Ahora se graficara con x(2-t)</p><pre class="codeinput">x=@(t) (-t).*(t&gt;=-4)&amp; (t&lt;=0) ;
+y=@(t) (t).*(t&lt;=2) &amp; (t&gt;=-4);
+t= (-4:1:2);
+hold <span class="string">off</span>
+plot (t,y(2-t));
+hold <span class="string">on</span>
+plot (t,x(2-t));
+hold <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="practica1_1_14.png" alt=""> <h2 id="27">Problema 3</h2><pre class="codeinput"><span class="comment">%onstruya una funci&oacute;n que gr&aacute;fique funciones de R==&gt;R en el</span>
+<span class="comment">%formato de su elecci&oacute;n y pruebe su c&oacute;digo para mostrar las gr&aacute;ficas de las</span>
+<span class="comment">%f&oacute;rmulas 1, 2 y 3 de la tabla que se encuentra en al secci&oacute;n de</span>
+<span class="comment">%tranformada de Fourier con el valor de a=1/2 y n=2</span>
+</pre><h2 id="28">Formula 1</h2><p>Para la formula (e^-at)u(t) del intervalo -5&lt;t&lt;20</p><pre class="codeinput">a= 1/2;
+f=@(t) exp(-a*t).*(t&gt;=0);
+t = (-5:0.1:20);
+plot(t,f(t));
+</pre><img vspace="5" hspace="5" src="practica1_1_15.png" alt=""> <h2 id="29">Formula 2</h2><p>Para la formula t(e^-at)u(t) del intervalo -5&lt;t&lt;20</p><pre class="codeinput">a= 1/2;
+f=@(t) t.*exp(-a*t).*(t&gt;=0);
+t = (-5:0.1:20);
+plot(t,f(t));
+</pre><img vspace="5" hspace="5" src="practica1_1_16.png" alt=""> <h2 id="30">Formula 3</h2><p>Para la formula (t^n)(e^-at)u(t) del intervalo -5&lt;t&lt;20</p><pre class="codeinput">a= 1/2;
+n= 2
+f=@(t) (t.^(n)).*exp(-a*t).*(t&gt;=0);
+t = (-5:0.1:20);
+plot(t,f(t));
+</pre><pre class="codeoutput">
+n =
+
+     2
+
+</pre><img vspace="5" hspace="5" src="practica1_1_17.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Practica 1 Señales en tiempo continuo 
+%
+% Integrantes:
+%
+% * Betanzos Ferrando Melvin Emiliano
+%
+% * García becerril Luis Ángel Ian
+%
+% * Rosales Perez Paola Monserrat
+%
+% Grupo: 2MV1
+%
+%% Objetivos:
+% 
+%% Introduccion 
+%
+%% Problema 1
+% Realiza los problemas de la seccion M1.1 a M1.4 de lathi.
+%
+%% M1.1 Funciones en linea
+%
+%% M1.1 Parte 1
+% si tomamos en cuenta  la siguiente funcion f(t) = e^?t cos(2?t). el codigo
+% en matlab seria el siguiente:
+f = @(t) exp(-t).*cos(2*pi.*(t));
+t = (-2:2);
+f(t);
+plot(t,f(t));
+xlabel ('t');
+ylabel('f(t)');
+grid; 
+%% M1.1 parte 2
+% como se puede observar en la grafica, MATLAB une los puntos del vector t
+% con el resultado que arroja la funcion, creando una representacion no muy
+% exacta, por lo cual se debe de definir un vector t con intervalos mas
+% pequeños para que sean mas puntosy por lo tanto este mas definida.
+%
+f = @(t) exp(-t).*cos(2*pi.*(t));
+t=(-2:0.01:2);
+plot(t,f(t));
+xlabel ('t');
+ylabel('f(t)');
+grid;
+%% M1.2 Operadores de relacion y escalon unitario
+%
+%% M1.2 Parte 1
+% Dentro del Matlab existen varios operadores los cuales se encargan de
+% relacionar o realizar operaciones en este caso son: <, >, <=, >=, ==, y
+% ~=. El siguiente ejemplo es un escalon unitario, definido de la siguiente
+% manera:
+
+u=@(t) (t>=0);
+t = (-2:2);
+plot (t,u(t));
+xlabel('t');
+ylabel('u(t)');
+
+%% M1.2 Parte 2
+% En la grafica anterior se presenta el problema de que el escalon unitario
+% presenta una inclinacion, esto puede ser solucionado con el comando axis.
+% De igual manera la definicion no es muy exacta por lo cual se pueden
+% agregar mas numeros al vector t.
+
+u=@(t) (t>=0);
+t = (-2:0.01:2);
+plot (t,u(t));
+xlabel('t');
+ylabel('u(t)');
+axis ([-2 2 -0.1 1.1]);
+
+
+%% M1.2 Parte 3
+% MATLAB tambien contiene relaciones y,o,negaciones; representadas como & |
+% y ~ respectivamente, el siguiente ejemplo es un pulso representado con la
+% ecuacion p(t) =u(t)-u(t-1).
+p =@(t) (t>=0) & (t<1);
+t = (-1:0.01:2); 
+plot(t,p(t));
+xlabel('t'); 
+ylabel('p(t)=u(t)-u(t-1)');
+axis ([-1 2 -.1 1.1]);
+
+%% M1.3  Visualizacion de operadores con variables independientes.
+%% M1.3 Parte 1
+% Para poder multiplicar un vector en cuanto a formulas en matlab se
+% ultiliza la notacion .*, en el siguiente ejemplo se estara grtaficando la
+% funcion :g(t) = f(t)u(t) = e-t cos(2?t)u(t)
+g = @(t) (exp(-t).*cos(2*pi*t).*(t>=0));
+t = (-2:0.01:2);
+plot(t,g(2*t+1)); 
+xlabel('t'); 
+ylabel('g(2t+1)');
+grid;
+%% M1.3 Parte 2
+% en este casi graficaremos la misma funcion anterior pero con g(?t + 1) en
+% el intervalo (-2 ? t ? 2).
+g = @(t) (exp(-t).*cos(2*pi*t).*(t>=0));
+t = (-2:0.01:2);
+plot(t,g(-t+1));
+xlabel('t'); 
+ylabel('g(-t+1)'); 
+grid;
+%% M1.3 Parte 3
+% Ahora graficaremos la funcion h(t) =g(2t + 1) + g(-t + 1) en el mismo
+% intervalo
+g = @(t) (exp(-t).*cos(2*pi*t).*(t>=0));
+t = (-2:0.01:2);
+plot(t,g(2*t+1) +g(-t+1)); 
+xlabel('t'); 
+ylabel('h(t)'); 
+grid;
+%% M1.4 Integracion numerica y energia estimada.
+%% M1.4 Parte 1
+% Considerando la señal x(t) = e?t(u(t) ? u(t ? 1)). la energia se expresa
+% de la siguiente manera: Ex = integradl de ??? |x(t)|2 dt = integral de 10
+% e?2t La cual se representa en MATLAB como:
+x =@(t) exp(-t).*((t>=0)&(t<1));
+t = (0:0.01:1);
+E_x =sum(x(t).*x(t)*0.01);
+E_x 
+%% M1.4 Parte 2
+% Para poder integrar de manera mas precisa se utiliza el operador quad con
+% una funcion que explique la integral como se muestra a continuacion:
+x_squared =@(t) exp(-2*t).*((t>=0)&(t>1));
+E_x = quad(x_squared,0,1);
+E_x
+%% M1.4 Parte 3
+% A continuacion usaremos una nueva funcion para definirla de manera mas
+% acertiva. 
+g_squared =@(t) exp(-2*t).*(cos(2*pi*t).*2).*(t>=0);
+t = (0:0.001:100);
+E_g = sum(g_squared(t)*0.001);
+E_g
+%% Problema 2
+% Resuelve el problema 1.2.2 usando las herramientas Problema anterior.
+%% Problema numero 2
+%% Parte 1
+% a continuacion definirimos la grafica original para despues poder meter
+% un corrimiento segun lo indica el problema.
+x=@(t) (-t).*(t>=-4)& (t<=0) ;
+y=@(t) (t).*(t<=2) & (t>=-4);
+t= (-4:1:2);
+hold off
+plot (t,y(t));
+hold on
+plot (t,x(t));
+hold off
+%% Parte 2
+% Ahora graficaremos con x(t-4)
+x=@(t) (-t).*(t>=-4)& (t<=0) ;
+y=@(t) (t).*(t<=2) & (t>=-4);
+t= (-4:1:2);
+hold off
+plot (t,y(t-4));
+hold on
+plot (t,x(t-4));
+hold off
+%% Parte 3 
+% Ahora se graficara con x(t/1.5)
+x=@(t) (-t).*(t>=-4)& (t<=0) ;
+y=@(t) (t).*(t<=2) & (t>=-4);
+t= (-4:1:2);
+hold off
+plot (t,y(t/1.5));
+hold on
+plot (t,x(t/1.5));
+hold off
+%% Parte 4
+% Ahora se graficara con x(-t)
+x=@(t) (-t).*(t>=-4)& (t<=0) ;
+y=@(t) (t).*(t<=2) & (t>=-4);
+t= (-4:1:2);
+hold off
+plot (t,y(-t));
+hold on
+plot (t,x(-t));
+hold off
+%% Parte 5 
+% Ahora se graficara con x(2t-4)
+x=@(t) (-t).*(t>=-4)& (t<=0) ;
+y=@(t) (t).*(t<=2) & (t>=-4);
+t= (-4:1:2);
+hold off
+plot (t,y(2*t-4));
+hold on
+plot (t,x(2*t-4));
+hold off
+%% Parte 6
+% Ahora se graficara con x(2-t)
+x=@(t) (-t).*(t>=-4)& (t<=0) ;
+y=@(t) (t).*(t<=2) & (t>=-4);
+t= (-4:1:2);
+hold off
+plot (t,y(2-t));
+hold on
+plot (t,x(2-t));
+hold off
+%% Problema 3
+%onstruya una función que gráfique funciones de R==>R en el
+%formato de su elección y pruebe su código para mostrar las gráficas de las
+%fórmulas 1, 2 y 3 de la tabla que se encuentra en al sección de
+%tranformada de Fourier con el valor de a=1/2 y n=2
+%% Formula 1
+% Para la formula (e^-at)u(t) del intervalo -5<t<20
+a= 1/2;
+f=@(t) exp(-a*t).*(t>=0);
+t = (-5:0.1:20);
+plot(t,f(t));
+%% Formula 2 
+% Para la formula t(e^-at)u(t) del intervalo -5<t<20
+a= 1/2;
+f=@(t) t.*exp(-a*t).*(t>=0);
+t = (-5:0.1:20);
+plot(t,f(t));
+%% Formula 3
+% Para la formula (t^n)(e^-at)u(t) del intervalo -5<t<20
+a= 1/2;
+n= 2
+f=@(t) (t.^(n)).*exp(-a*t).*(t>=0);
+t = (-5:0.1:20);
+plot(t,f(t));
+
+
+
+##### SOURCE END #####
+--></body></html>
