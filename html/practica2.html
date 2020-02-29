@@ -70,9 +70,6 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 <span class="comment">% Manipulaci&oacute;n b&aacute;sica de MATLAB</span>
 <span class="comment">% Gr&aacute;ficas de se&ntilde;ales reales y complejas discretas</span>
 <span class="comment">% Transformaci&oacute;n de se&ntilde;ales discretas (escalamientos y traslaciones</span>
-</pre><pre class="codeoutput error">Error using dbstatus
-Error: File: C:\Users\monse\OneDrive\Documentos\Se&ntilde;ales\Nueva carpeta\practica2.m Line: 62 Column: 14
-Invalid use of operator.
 </pre><h2 id="2">Introduccion</h2><p>El escalamiento horizontal es una operaci&oacute;n que se le aplica a una se&ntilde;al base para generar una se&ntilde;al nueva. Analiticamente un escalamiento horizontal tiene la forma:</p><p>g[n]=hEb{f[n]}=f[bn].</p><p>El escalamiento horizontal nos puede arrojar dos resulados, una compresi&oacute;n o una expansi&oacute;n de la se&ntilde;al. Visualmente se podria suponer que cuando vemos una expresi&oacute;n de este tipo f(n)=2n damos por hecho que la se&ntilde;al se duplicar&aacute;, sin embargo ocurre todo lo contrario. Si tenemos una b&gt;1 tendremos una compresi&oacute;n y esto implica que podamos tener una perdida de "datos", esta perdida de datos dependera del valor de b, ya que solo se conservaran las b-&eacute;simas muestras b+N, es decir solo multiplos de b.</p><p>A continuaci&oacute;n se muestra un ejemplo de escalonamiento cuando b&gt;1, en este caso se tiene una funci&oacute;n f(n)=n y con base en esta se busca generar una se&ntilde;al g(n)=f(2n).</p><pre class="codeinput">f=@(n) n.*(n&gt;=0);
 figure
 n=-10:10;
@@ -89,7 +86,7 @@ grid <span class="string">on</span>
 ylabel(<span class="string">'g(n)'</span>)
 xlabel(<span class="string">'n'</span>)
 title(<span class="string">'Funci&oacute;n escalonada g(n)=2n'</span>)
-</pre><p>Podemos ver como se pierde informaci&oacute;n de los valores n={3,5,7,..}.</p><p>Cuando 0&lt;b&lt;1 tenemos una expansi&oacute;n de la se&ntilde;al. Lo que sucede en estos casos es que se generan huecos en la se&ntilde;al, es decir, en vez de perder informaci&oacute;n nos faltaria informaci&oacute;n, esto ocurre debido a que si recordamos, las se&ntilde;ales discretas por norma se evaluan en valores enteros. Para ejemplificar este tipo de escalonamiento usaremos una funci&oacute;n h(n)=1 cuando se cumpla la siguiente condici&oacute;n: -3&lt;=n&lt;=1 y se busca hacer un escalamiento y(n)=h(0.5n).</p><pre class="codeinput">h=@(n) n.*(n&lt;=1);
+</pre><img vspace="5" hspace="5" src="practica2_01.png" alt=""> <img vspace="5" hspace="5" src="practica2_02.png" alt=""> <p>Podemos ver como se pierde informaci&oacute;n de los valores n={3,5,7,..}.</p><p>Cuando 0&lt;b&lt;1 tenemos una expansi&oacute;n de la se&ntilde;al. Lo que sucede en estos casos es que se generan huecos en la se&ntilde;al, es decir, en vez de perder informaci&oacute;n nos faltaria informaci&oacute;n, esto ocurre debido a que si recordamos, las se&ntilde;ales discretas por norma se evaluan en valores enteros. Para ejemplificar este tipo de escalonamiento usaremos una funci&oacute;n h(n)=1 cuando se cumpla la siguiente condici&oacute;n: -3&lt;=n&lt;=1 y se busca hacer un escalamiento y(n)=h(0.5n).</p><pre class="codeinput">h=@(n) n.*(n&lt;=1);
 figure
 n=-5:5;
 stem(n,h(n));
@@ -97,7 +94,7 @@ grid <span class="string">on</span>
 ylabel(<span class="string">'h(n)'</span>)
 xlabel(<span class="string">'n'</span>)
 title(<span class="string">'Funci&oacute;n original h(n)=n'</span>)
-y=@(n) ((0.5).n).(n&lt;=2);
+y=@(n) ((0.5).*n).*(n&lt;=2);
 figure
 n=-5:5;
 stem(n,y(n));
@@ -105,7 +102,7 @@ grid <span class="string">on</span>
 ylabel(<span class="string">'y(n)'</span>)
 xlabel(<span class="string">'n'</span>)
 title(<span class="string">'Funci&oacute;n escalonada y(n)=n'</span>)
-</pre><p>Podemos resaltar la informaci&oacute;n m&aacute;s importante en los siguientes puntos. *Se pierden datos cuando se comprime, s&oacute;lo podemos ver m&uacute;ltiplos del valor de compresi&oacute;n (siempre entero). * Cuando expandimos, tenemos la se&ntilde;al completa.</p><h2 id="11">PROBLEMA 1</h2><h2 id="12">PARTE 1</h2><p>Para x[n] grafique las siguientes se&ntilde;ales:</p><pre class="codeinput">x=@(t) ((t).*(t&gt;=0 ))
+</pre><img vspace="5" hspace="5" src="practica2_03.png" alt=""> <img vspace="5" hspace="5" src="practica2_04.png" alt=""> <p>Podemos resaltar la informaci&oacute;n m&aacute;s importante en los siguientes puntos. *Se pierden datos cuando se comprime, s&oacute;lo podemos ver m&uacute;ltiplos del valor de compresi&oacute;n (siempre entero). * Cuando expandimos, tenemos la se&ntilde;al completa.</p><h2 id="11">PROBLEMA 1</h2><h2 id="12">PARTE 1</h2><p>Para x[n] grafique las siguientes se&ntilde;ales:</p><pre class="codeinput">x=@(t) ((t).*(t&gt;=0 ))
 h=@(t) ((0).*(t&gt;3))
 y=@(t) (((-t)+6).*(t&gt;=3))
 t= (0:1:6);
@@ -114,7 +111,28 @@ stem (t,x(t));
 hold <span class="string">on</span>
 stem (t,y(t));
 hold <span class="string">off</span>
-</pre><h2 id="13">PARTE 2</h2><pre class="codeinput">x=@(t) ((t).*(t&gt;=0 ))
+</pre><pre class="codeoutput">
+x =
+
+  function_handle with value:
+
+    @(t)((t).*(t&gt;=0))
+
+
+h =
+
+  function_handle with value:
+
+    @(t)((0).*(t&gt;3))
+
+
+y =
+
+  function_handle with value:
+
+    @(t)(((-t)+6).*(t&gt;=3))
+
+</pre><img vspace="5" hspace="5" src="practica2_05.png" alt=""> <h2 id="13">PARTE 2</h2><pre class="codeinput">x=@(t) ((t).*(t&gt;=0 ))
 h=@(t) ((0).*(t&gt;3))
 y=@(t) (((-t)+6).*(t&gt;=3))
 t= (0:1:6);
@@ -123,7 +141,28 @@ stem (t,x(-t));
 hold <span class="string">on</span>
 stem (t,y(-t));
 hold <span class="string">off</span>
-</pre><h2 id="14">PARTE 3</h2><pre class="codeinput">x=@(t) ((t).*(t&gt;=0 ))
+</pre><pre class="codeoutput">
+x =
+
+  function_handle with value:
+
+    @(t)((t).*(t&gt;=0))
+
+
+h =
+
+  function_handle with value:
+
+    @(t)((0).*(t&gt;3))
+
+
+y =
+
+  function_handle with value:
+
+    @(t)(((-t)+6).*(t&gt;=3))
+
+</pre><img vspace="5" hspace="5" src="practica2_06.png" alt=""> <h2 id="14">PARTE 3</h2><pre class="codeinput">x=@(t) ((t).*(t&gt;=0 ))
 h=@(t) ((0).*(t&gt;3))
 y=@(t) (((-t)+6).*(t&gt;=3))
 t= (0:1:6);
@@ -132,7 +171,28 @@ stem (t,x(t+6));
 hold <span class="string">on</span>
 stem (t,y(t+6));
 hold <span class="string">off</span>
-</pre><h2 id="15">PARTE 4</h2><pre class="codeinput">x=@(t) ((t).*(t&gt;=0 ))
+</pre><pre class="codeoutput">
+x =
+
+  function_handle with value:
+
+    @(t)((t).*(t&gt;=0))
+
+
+h =
+
+  function_handle with value:
+
+    @(t)((0).*(t&gt;3))
+
+
+y =
+
+  function_handle with value:
+
+    @(t)(((-t)+6).*(t&gt;=3))
+
+</pre><img vspace="5" hspace="5" src="practica2_07.png" alt=""> <h2 id="15">PARTE 4</h2><pre class="codeinput">x=@(t) ((t).*(t&gt;=0 ))
 h=@(t) ((0).*(t&gt;3))
 y=@(t) (((-t)+6).*(t&gt;=3))
 t= (0:1:6);
@@ -141,7 +201,28 @@ stem (t,x(t-6));
 hold <span class="string">on</span>
 stem (t,y(t-6));
 hold <span class="string">off</span>
-</pre><h2 id="16">PARTE 5</h2><pre class="codeinput">x=@(t) ((t).*(t&gt;=0 ))
+</pre><pre class="codeoutput">
+x =
+
+  function_handle with value:
+
+    @(t)((t).*(t&gt;=0))
+
+
+h =
+
+  function_handle with value:
+
+    @(t)((0).*(t&gt;3))
+
+
+y =
+
+  function_handle with value:
+
+    @(t)(((-t)+6).*(t&gt;=3))
+
+</pre><img vspace="5" hspace="5" src="practica2_08.png" alt=""> <h2 id="16">PARTE 5</h2><pre class="codeinput">x=@(t) ((t).*(t&gt;=0 ))
 h=@(t) ((0).*(t&gt;3))
 y=@(t) (((-t)+6).*(t&gt;=3))
 t= (0:1:6);
@@ -150,7 +231,28 @@ stem (t,x(3*t));
 hold <span class="string">on</span>
 stem (t,y(3*t));
 hold <span class="string">off</span>
-</pre><h2 id="17">PARTE 6</h2><pre class="codeinput">x=@(t) ((t).*(t&gt;=0 ))
+</pre><pre class="codeoutput">
+x =
+
+  function_handle with value:
+
+    @(t)((t).*(t&gt;=0))
+
+
+h =
+
+  function_handle with value:
+
+    @(t)((0).*(t&gt;3))
+
+
+y =
+
+  function_handle with value:
+
+    @(t)(((-t)+6).*(t&gt;=3))
+
+</pre><img vspace="5" hspace="5" src="practica2_09.png" alt=""> <h2 id="17">PARTE 6</h2><pre class="codeinput">x=@(t) ((t).*(t&gt;=0 ))
 h=@(t) ((0).*(t&gt;3))
 y=@(t) (((-t)+6).*(t&gt;=3))
 t= (0:1:6);
@@ -159,7 +261,28 @@ stem (t,x(t/3));
 hold <span class="string">on</span>
 stem (t,y(t/3));
 hold <span class="string">off</span>
-</pre><h2 id="18">PARTE 7</h2><pre class="codeinput">x=@(t) ((t).*(t&gt;=0 ))
+</pre><pre class="codeoutput">
+x =
+
+  function_handle with value:
+
+    @(t)((t).*(t&gt;=0))
+
+
+h =
+
+  function_handle with value:
+
+    @(t)((0).*(t&gt;3))
+
+
+y =
+
+  function_handle with value:
+
+    @(t)(((-t)+6).*(t&gt;=3))
+
+</pre><img vspace="5" hspace="5" src="practica2_10.png" alt=""> <h2 id="18">PARTE 7</h2><pre class="codeinput">x=@(t) ((t).*(t&gt;=0 ))
 h=@(t) ((0).*(t&gt;3))
 y=@(t) (((-t)+6).*(t&gt;=3))
 t= (0:1:6);
@@ -168,7 +291,28 @@ stem (t,x(3-t));
 hold <span class="string">on</span>
 stem (t,y(3-t));
 hold <span class="string">off</span>
-</pre><h2 id="19">Problema 2</h2><p>Cree una funci&oacute;n que gr&aacute;fique funciones de f:Z-R. Resuelva el problema 3.3.7 de Lathi: Encuentre y grafique los componentes pares e impares de: u(n) nu(n) sin((pi*n)/4) cos ((pi*n)/4)</p><h2 id="20">Parte 1</h2><pre class="codeinput">u=@(n) (n&gt;=0);
+</pre><pre class="codeoutput">
+x =
+
+  function_handle with value:
+
+    @(t)((t).*(t&gt;=0))
+
+
+h =
+
+  function_handle with value:
+
+    @(t)((0).*(t&gt;3))
+
+
+y =
+
+  function_handle with value:
+
+    @(t)(((-t)+6).*(t&gt;=3))
+
+</pre><img vspace="5" hspace="5" src="practica2_11.png" alt=""> <h2 id="19">Problema 2</h2><p>Cree una funci&oacute;n que gr&aacute;fique funciones de f:Z-R. Resuelva el problema 3.3.7 de Lathi: Encuentre y grafique los componentes pares e impares de: u(n) nu(n) sin((pi*n)/4) cos ((pi*n)/4)</p><h2 id="20">Parte 1</h2><pre class="codeinput">u=@(n) (n&gt;=0);
 x2=@(n) 0.5*(u(n)+u(-n));
 x3=@(n) 0.5*(u(n)-u(-n));
 figure
@@ -179,7 +323,7 @@ figure
 stem(n,u(n));
 grid <span class="string">on</span>
 title(<span class="string">'Parte Impar'</span>)
-</pre><h2 id="21">Parte 2</h2><pre class="codeinput">nu1=@(n) (n&gt;=0);
+</pre><img vspace="5" hspace="5" src="practica2_12.png" alt=""> <img vspace="5" hspace="5" src="practica2_13.png" alt=""> <h2 id="21">Parte 2</h2><pre class="codeinput">nu1=@(n) (n&gt;=0);
 x2=@(n) 0.5*(nu1(n)+nu1(-n));
 x3=@(n) 0.5*(u(n)-u(-n));
 figure
@@ -214,7 +358,7 @@ figure
 stem(n,x3(n));
 grid <span class="string">on</span>
 title(<span class="string">'Parte Impar'</span>)
-</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019b</a><br></p></div><!--
+</pre><img vspace="5" hspace="5" src="practica2_14.png" alt=""> <img vspace="5" hspace="5" src="practica2_15.png" alt=""> <img vspace="5" hspace="5" src="practica2_16.png" alt=""> <img vspace="5" hspace="5" src="practica2_17.png" alt=""> <img vspace="5" hspace="5" src="practica2_18.png" alt=""> <img vspace="5" hspace="5" src="practica2_19.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019b</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% Practica 2: Señales en tiempo discreto.
 %
@@ -277,7 +421,7 @@ grid on
 ylabel('h(n)')
 xlabel('n')
 title('Función original h(n)=n')
-y=@(n) ((0.5).n).(n<=2);
+y=@(n) ((0.5).*n).*(n<=2);
 figure
 n=-5:5;
 stem(n,y(n));
