@@ -1,0 +1,345 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Practica 4:Convolucion y coorelacion</title><meta name="generator" content="MATLAB 9.7"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-04-03"><meta name="DC.source" content="Untitled.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Practica 4:Convolucion y coorelacion</h1><!--introduction--><p>INTEGRANTES:</p><div><ul><li>Garcia Becerril Luis Angel Ian</li><li>Rosales Perez Paola Monserrat</li><li>Betanzos Fernando Melvin Emiliano</li></ul></div><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Objetivos:</a></li><li><a href="#2">Introduccion</a></li><li><a href="#3">Entregable 1 Analitico</a></li><li><a href="#4">Entregable 2 Analitico</a></li><li><a href="#5">Entregable 1</a></li><li><a href="#7">Entregable 2</a></li><li><a href="#9">Entregable 3</a></li><li><a href="#11">Entregable 4</a></li><li><a href="#13">Entregable 5</a></li></ul></div><h2 id="1">Objetivos:</h2><div><ol><li>Conocer m&eacute;todos b&aacute;sicos de integraci&oacute;n num&eacute;rica</li><li>Manipulaci&oacute;n de instrucciones en MATLAB</li><li>Simular convoluciones y correlaciones de se&ntilde;ales continuas</li><li>Simular convoluciones y correlaciones de se&ntilde;ales discretas</li></ol></div><h2 id="2">Introduccion</h2><p>La integraci&oacute;n n&uacute;merica tiene como objeto calcular el valor n&uacute;merico de una integral definida y existen diferentes m&eacute;todos para poder hacerlo.</p><div><ul><li>EL Teorema Fundamental del C&aacute;lculo es uno de ellos, este m&eacute;todo junta los estudios de integreaci&oacute;n y derivaci&oacute;n, determinando as&iacute; que ambos procesos son inversos.</li></ul></div><p>Matem&aacute;ticamente El Teorema Fundamental del C&aacute;lculo nos dice que si <img src="Untitled_eq18096895394918367257.png" alt="$f$"> es integrable, y <img src="Untitled_eq06438461134630978859.png" alt="$$\frac{dF(x)}{dx}=f(x)$"> entonces:</p><p><img src="Untitled_eq02843625088566614946.png" alt="$$\int_a^b f(x)dx=F(b)-F(a)$"></p><p>*Ejemplo.</p><p><img src="Untitled_eq15580636086611696067.png" alt="$$f(x)=e^{-x^{2}}$$"></p><p><img vspace="5" hspace="5" src="EJEM1.JPG" alt=""> </p><p><img src="Untitled_eq04616443709217977586.png" alt="$$\int_{-1}^{1} f(x) dx =\int_{-1}^{1} e^{-x^{2}}dx= F(1)-F(-1)$$"></p><p>Sin embargo no podemos encontrar algun m&eacute;todo para conocer la antiderivada, asi que aproximamos el &aacute;rea y construmos un polinomio.</p><p><img src="Untitled_eq16369714792726644241.png" alt="$$P(x)=1$$"></p><p><img src="Untitled_eq10984254301765602929.png" alt="$$\int_{-1}^{1}P(x)dx=\int_{-1}^{1}dx=x|_{-1}^{1}=2$$"></p><p><img src="Untitled_eq00659396762773987971.png" alt="$$\int_{-1}^{1}e^{-x^{2}}dx<2$$"></p><p><img src="Untitled_eq17128630880721727580.png" alt="$$\int_{-1}^{1} e^{-x^{2}}dx\approx1.4936 $$"></p><p>Un m&eacute;todo muy com&uacute;n para realizar una integraci&oacute;n n&uacute;merica son las Formulas de Newton-Cotes,&eacute;ste m&eacute;todo consiste en usar un polinomio de aproximaci&oacute;n en vez de una la funci&oacute;n la cual podria resultar m&aacute;s complicada. Determinando as&iacute;:</p><p><img src="Untitled_eq06715902918340545191.png" alt="$f(x)=P(x)+\frac{f^{(n+1)}}{(n+1)!}(\epsilon(x))(x-x_{0})(x-x_{1})...(x-x_{n})$"></p><p>Con base en esto s&oacute;lo integramos el polinomio con el error, provocando tener varias formulas de Newton-Cotes, y estas van a depender del grado del polinomio que se quiera encontrar.</p><div><ul><li>Para una n=1 tendremos la Regla del Trapecio.</li></ul></div><p><img src="Untitled_eq15151297460475809203.png" alt="$$\int_{x_{0}}^{x_{1}} f(x) dx=\frac{h}{2}[f(x_{0})+f(x_{1})]-\frac{h^3}{12}f''(\epsilon)$$"></p><p>% <img src="Untitled_eq05429849724350008885.png" alt="$$x_{0}<\epsilon<x_{1}$">$</p><p>*EJEMPLO</p><p><img src="Untitled_eq10342438503130555698.png" alt="$$\int_{-1}^{1}e^{-x^{2}}dx=\frac{2}{2}[e^{-1}+e^{-1}]-\frac{8}{2}[-2e^{-\epsilon^{2}}(1-2\epsilon^2)]$$"></p><p><img src="Untitled_eq05406871809291400627.png" alt="$$=0.7557+\frac{4}{3}e^{\epsilon^{2}}(1-2\epsilon^2)$$"></p><div><ul><li>Para n=2 tendremos la Regla de Simpson.</li></ul></div><p><img src="Untitled_eq03595430928146711759.png" alt="$$\int_{x_{0}}^{x_{2}} f(x) dx =\frac{h}{3}[f(x_{0})+4f(x_{1})+f(x_{2})]-\frac{h^5}{90}f^4(\epsilon)$$"></p><p><img src="Untitled_eq04094261009888770297.png" alt="$$x_{0}<\epsilon<x_{3}$$"></p><div><ul><li>EJEMPLO</li></ul></div><p><img src="Untitled_eq00934902699263927921.png" alt="$$\int_{-1}^{1}e^{-x^{2}}dx=\frac{1}{3}[e^{-1}+4e^0+e^{-1}]-\frac{1}{90}[4e^{-\epsilon^{2}}(-4\epsilon^4+12\epsilon^2-3)]$$"></p><p><img src="Untitled_eq03065360694502227519.png" alt="$$=1.5785+\frac{2}{45}e^{E^{2}}(-4\epsilon^4+12\epsilon^2-3)$$"></p><div><ul><li>Para n=3 tendremos la Regla de tres octavos de Simpson.</li></ul></div><p><img src="Untitled_eq08557225598223511467.png" alt="$$\int_{x_{0}}^{x_{3}} f(x) dx =\frac{3h}{8}[f(x_{0})+3f(x_{1})+3f(x_{2})+f(x_{3})]-\frac{3h^3}{80}f^4(\epsilon)$$"></p><p><img src="Untitled_eq04094261009888770297.png" alt="$$x_{0}<\epsilon<x_{3}$$"></p><div><ul><li>EJEMPLO</li></ul></div><p><img src="Untitled_eq08867690339297314890.png" alt="$$\int_{-1}^{1}e^{-x^{2}}dx=\frac{3}{8}\frac{2}{3}[e^{-1}+3e^{\frac{-1}{4}}+3e^{\frac{-1}{4}}+e^{-1}]-\frac{3}{80}(\frac{2}{5})^5[4e^{-\epsilon^{2}}(-4\epsilon^4+12\epsilon^2-3)]$$"></p><p><img src="Untitled_eq02019517769132845786.png" alt="$$=1.5261+\frac{8}{405}e^{\epsilon^{2}}(4\epsilon^4+12\epsilon^2-3)$$"></p><p>Tambi&eacute;n existen las Formulas cerradas de Newton-Cotes Compuestas, las cuales concisten en subidividir el intervalo de integraci&oacute;n en varios segmentos del mismo tama&ntilde;o.</p><div><ul><li>Regla Compuesta del Trapecio.</li></ul></div><p><img src="Untitled_eq07242090207310500782.png" alt="$$\int_a^b f(x) dx =\frac{h}{2}[f(a)+2\sum _{J=1}^{n-1}f(xj)+f(b)]-(b-a)\frac{h^2}{12}f''(u)$$"></p><div><ul><li>EJEMPLO</li></ul></div><p><img src="Untitled_eq06773099232485188053.png" alt="$$\int_{-1}^{1} e^{-x^2} dx =\frac{0.2}{2}[e^{-1}+2\sum {J=1}^{4}e^{-x{2j}^{2}}+e^{-1}]-(2)\frac{(0.2)^2}{12}[-2e^{-u^2}(1-2u^2)]$$"></p><p><img src="Untitled_eq14736174446795008921.png" alt="$$=1.4887+0.0133e^{-u^2}(1-2u^2); -1<u<1$$"></p><p><a href="https://www.desmos.com/calculator/fyuqxvl7oe">https://www.desmos.com/calculator/fyuqxvl7oe</a></p><div><ul><li>Regla Compuesta de Simpson.</li></ul></div><p><img src="Untitled_eq02689635941041005772.png" alt="$$\int_{-1}^{1} e^{-x^2} dx =\frac{h}{3}[f(a)+2\sum {J=1}^{(n/2)-1}f(x{2j})+4\sum {J=1}^{(n/2)}f(x{2j-1})+f(b)]-(b-a)\frac{h^4}{180}f^4(u)$$"></p><div><ul><li>EJEMPLO% <img src="Untitled_eq05533875269169496630.png" alt="$$\int_a^b f(x) dx =\frac{0.2}{3}[e^{-1}+2\sum {J=1}^{4}e^{-x{2j}^{2}}+4\sum {J=1}^{5}e^{-(x{2j-1})^{2}}+e^{-1}]-(2)\frac{(0.2)^4}{180}[-4e^{-u^2}(-4^4+12u^2-3)]$">$</li></ul></div><p><img src="Untitled_eq03966952326684261551.png" alt="$$=1.4986+0.000071e^{-u^2}(-4u^4+2u^2-3); -1<u<1$$"></p><p>Finalmente se hablara de la Cuadratura Gaussiana, este m&eacute;todo nos dice que dada una integral de f(x) evaluada en [a,b] trata de aproximar esta integral por evaluaci&oacute;n de la funci&oacute;n en determinados puntos por determinadas constantes. Las evaluaciones son a elecci&oacute;n pero dichas elecciones tienen restricciones.</p><p><img src="Untitled_eq00255637523215971138.png" alt="$$\int_a^b f(x) dx =\sum {i=1}^{n}C{i}F(x_{i}); 2n parametros $$"></p><div><ul><li>EJEMPLO</li></ul></div><p><img src="Untitled_eq07700622267494447060.png" alt="$$\int_{-1}^{1} e^{-x^2} dx \approx e^{-(05773502)^2}+e^{-(-0.57773502)^2}//(n=2)$$"></p><p><img src="Untitled_eq09738268096297738385.png" alt="$$\approx1.4331$$"></p><p><img src="Untitled_eq12266121546495427979.png" alt="$$\int_{-1}^{1} e^{-x^2} dx \approx 0.555555556e^{-(0.77459)^2}+0.888888889+0.555555559e^{-(0.77459)^2}//(n=3)$$"></p><p><img src="Untitled_eq14073442267905097165.png" alt="$$\approx1.4986$$"></p><p><a href="https://www.desmos.com/calculator/9ze7gypnev">https://www.desmos.com/calculator/9ze7gypnev</a></p><h2 id="3">Entregable 1 Analitico</h2><pre class="codeinput">c1=@(t) 0.*(t&lt;=-1)+(((t-1)+(2./exp(t+1))).*(t&gt;-1 &amp; t&lt;=0))+((t-((t-2)./exp(1))-1).*(t&gt;0 &amp; t&lt;=1))+((-(t-2)./exp(1)).*(t&gt;1 &amp; t&lt;= 2))+ 0.*(t&gt;2);
+t=[-2:0.01:2];
+plot(t,c1(t))
+</pre><img vspace="5" hspace="5" src="Untitled_01.png" alt=""> <h2 id="4">Entregable 2 Analitico</h2><pre class="codeinput">c2=@(t) (0.*(t&lt;=-4))+((-4-t).*(t&gt;-4 &amp; t&lt;=-3))+((t+2).*(t&gt;-3 &amp; t&lt;=-1))+((3.*t+4).*(t&gt;-1 &amp; t&lt;0))+((t).*(t==0))+((-3.*t+4).*(t&gt;0 &amp; t&lt;=1))+((2-t).*(t&gt;1 &amp; t&lt;=3))+((t-4).*(t&gt;3 &amp; t&lt;=4))+(0.*(t&gt;4));
+t=[-6:0.1:6];
+plot (t,c2(t))
+</pre><img vspace="5" hspace="5" src="Untitled_02.png" alt=""> <h2 id="5">Entregable 1</h2><p>Para el PR04 reporte la grafica de la simulaci&oacute;n n&uacute;merica de la convoluci&oacute;n y compare con el resultado an&aacute;litico que obtuvo para el problema 1 su pr&aacute;ctica tendr&aacute; que incluir una llamada a la funci&oacute;nn convconm  y posteriormente se tendr&aacute; que mostrar (mediante el Publish) la gr&aacute;fica tanto de las se&ntilde;ales involucradas como el resultado de la convoluci&oacute;n</p><p>La funcion Fija sera X(t)</p><p>La funcion Movil sera F(t)</p><pre class="codeinput">F=@(t) 1*t.*(t&gt;=-1 &amp; t&lt;1);
+X=@(t) exp(-t).*(t&gt;=0 &amp; t&lt;=1);
+convconm1 (F,X);
+</pre><img vspace="5" hspace="5" src="Untitled_03.png" alt=""> <p><img vspace="5" hspace="5" src="PR04.GIF" alt=""> </p><h2 id="7">Entregable 2</h2><p>Para el PR05 reporte la grafica de la simulaci&oacute;n n&uacute;merica de la correalci&oacute;n y compare con el resultado an&aacute;litico que obtuvo para el problema e) su pr&aacute;ctica tendr&aacute; que incluir una llamada a la funci&oacute;nn convconm y posteriormente se tendr&aacute; que mostrar (mediante el Publish) la gr&aacute;fica tanto de las se&ntilde;ales involucradas como el resultado de su correlaci&oacute;n, y en esta &uacute;ltima graficara su resultado analitico, se tendr&aacute; que incluir el resultado analitico.</p><p>La funcion fija sera U(x)</p><p>L a funcion movil sera G(x)</p><pre class="codeinput">G=@(t) (t&gt;=1&amp;t&lt;3)+(-1.*(t&gt;=3&amp;t&lt;4));
+U=@(t) (-1.*(t&gt;=-4 &amp; t&lt;-3))+(t&gt;=-3&amp;t&lt;0);
+convconm(G,U);
+</pre><img vspace="5" hspace="5" src="Untitled_05.png" alt=""> <p><img vspace="5" hspace="5" src="PR05.GIF" alt=""> </p><h2 id="9">Entregable 3</h2><p>Realice la simuaci&oacute;n de la convoluci&oacute;n de las se&ntilde;ales (c) con (d) del problema 3.1.1</p><p>C(t) sera la funcion Fija D(t) sera la funcion Movil</p><pre class="codeinput"> n=-4:4;
+c1= [0 -9 -6 -3 0 3 6 9 0 ];
+d1=[0 0 4 2 0 2 4 0 0 ];
+ convdisc1([n;c1],[n;d1]);
+</pre><img vspace="5" hspace="5" src="Untitled_07.png" alt=""> <p><img vspace="5" hspace="5" src="3.1.1CONVOLUCION.GIF" alt=""> </p><h2 id="11">Entregable 4</h2><p>Realice la simuaci&oacute;n de la correlaci&oacute;n de las se&ntilde;ales (c) con (d) del problema 3.1.1</p><p>C(t) sera la funcion Fija</p><p>D(t) sera la funcion Movil</p><pre class="codeinput"> nc=-4:4;
+c2= [0 -9 -6 -3 0 3 6 9 0 ];
+d2=[0 0 4 2 0 2 4 0 0 ];
+convdisc12( [nc;c2], [nc;-d2] );
+</pre><img vspace="5" hspace="5"  src="Untitled_09.png" alt=""> <p><img vspace="5" hspace="5" src="3.1.1COORELACION.GIF" alt=""> </p><h2 id="13">Entregable 5</h2><p>Reaice la la convoluci&oacute;n de las se&ntilde;ales (c) con (d) del problema 3.1.1% utilizando el comando conv de MATLAB, muestre el c&oacute;digo utilizado y gr&aacute;fique el resultado, sugerencia: Utilice las propiedades de traslaci&oacute;n de la convoluci&oacute;n.</p><pre class="codeinput">nc=-4:4;
+c3= [0 -9 -6 -3 0 3 6 9 0 ];
+d4=[0 0 4 2 0 2 4 0 0 ];
+y= conv (c3,d4)
+stem ([1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17],y)
+</pre><pre class="codeoutput">
+y =
+
+  Columns 1 through 13
+
+     0     0     0   -36   -42   -24   -24   -36     0    36    24    24    42
+
+  Columns 14 through 17
+
+    36     0     0     0
+
+</pre><img vspace="5" hspace="5" src="Untitled_10.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Practica 4:Convolucion y coorelacion 
+%
+% INTEGRANTES:
+%
+% 
+% * Garcia Becerril Luis Angel Ian
+% * Rosales Perez Paola Monserrat 
+% * Betanzos Fernando Melvin Emiliano
+%
+%% Objetivos:
+% 
+% 
+% # Conocer métodos básicos de integración numérica
+% # Manipulación de instrucciones en MATLAB
+% # Simular convoluciones y correlaciones de señales continuas
+% # Simular convoluciones y correlaciones de señales discretas
+%
+%% Introduccion 
+% La integración númerica tiene como objeto calcular el valor númerico de
+% una integral definida y existen diferentes métodos para poder hacerlo.
+%
+% * EL Teorema Fundamental del Cálculo es uno de ellos, este método junta los estudios de integreación y derivación, determinando así que ambos procesos son inversos.
+%
+% Matemáticamente El Teorema Fundamental del Cálculo nos dice que si $f$ es
+% integrable, y $$\frac{dF(x)}{dx}=f(x)$ entonces:
+%
+% $$\int_a^b f(x)dx=F(b)-F(a)$
+% 
+% *Ejemplo.
+%
+% $$f(x)=e^{-x^{2}}$$
+%
+% 
+% <<EJEM1.JPG>>
+% 
+%
+% $$\int_{-1}^{1} f(x) dx =\int_{-1}^{1} e^{-x^{2}}dx= F(1)-F(-1)$$
+%
+% Sin embargo no podemos encontrar algun método para conocer la
+% antiderivada, asi que aproximamos el área y construmos un polinomio.
+%
+% $$P(x)=1$$
+% 
+% $$\int_{-1}^{1}P(x)dx=\int_{-1}^{1}dx=x|_{-1}^{1}=2$$
+%
+% $$\int_{-1}^{1}e^{-x^{2}}dx<2$$
+%
+% $$\int_{-1}^{1} e^{-x^{2}}dx\approx1.4936 $$
+%
+% Un método muy común para realizar una integración númerica son las
+% Formulas de Newton-Cotes,éste método consiste en usar un polinomio de
+% aproximación en vez de una la función la cual podria resultar más
+% complicada. Determinando así:
+%
+% $f(x)=P(x)+\frac{f^{(n+1)}}{(n+1)!}(\epsilon(x))(x-x_{0})(x-x_{1})...(x-x_{n})$
+%
+% Con base en esto sólo integramos el polinomio con el error, provocando
+% tener varias formulas de Newton-Cotes, y estas van a depender del grado
+% del polinomio que se quiera encontrar.
+%
+% * Para una n=1 tendremos la Regla del Trapecio.
+%
+% $$\int_{x_{0}}^{x_{1}} f(x) dx=\frac{h}{2}[f(x_{0})+f(x_{1})]-\frac{h^3}{12}f''(\epsilon)$$
+%
+% % $$x_{0}<\epsilon<x_{1}$$
+%
+% *EJEMPLO
+%
+% $$\int_{-1}^{1}e^{-x^{2}}dx=\frac{2}{2}[e^{-1}+e^{-1}]-\frac{8}{2}[-2e^{-\epsilon^{2}}(1-2\epsilon^2)]$$
+%
+% $$=0.7557+\frac{4}{3}e^{\epsilon^{2}}(1-2\epsilon^2)$$
+% 
+% * Para n=2 tendremos la Regla de Simpson.
+%
+% $$\int_{x_{0}}^{x_{2}} f(x) dx =\frac{h}{3}[f(x_{0})+4f(x_{1})+f(x_{2})]-\frac{h^5}{90}f^4(\epsilon)$$
+%
+% $$x_{0}<\epsilon<x_{3}$$
+%
+% * EJEMPLO
+%
+% $$\int_{-1}^{1}e^{-x^{2}}dx=\frac{1}{3}[e^{-1}+4e^0+e^{-1}]-\frac{1}{90}[4e^{-\epsilon^{2}}(-4\epsilon^4+12\epsilon^2-3)]$$
+%
+% $$=1.5785+\frac{2}{45}e^{E^{2}}(-4\epsilon^4+12\epsilon^2-3)$$
+%
+% * Para n=3 tendremos la Regla de tres octavos de Simpson. 
+%
+% $$\int_{x_{0}}^{x_{3}} f(x) dx =\frac{3h}{8}[f(x_{0})+3f(x_{1})+3f(x_{2})+f(x_{3})]-\frac{3h^3}{80}f^4(\epsilon)$$
+%
+% $$x_{0}<\epsilon<x_{3}$$
+%
+% * EJEMPLO
+%
+% $$\int_{-1}^{1}e^{-x^{2}}dx=\frac{3}{8}\frac{2}{3}[e^{-1}+3e^{\frac{-1}{4}}+3e^{\frac{-1}{4}}+e^{-1}]-\frac{3}{80}(\frac{2}{5})^5[4e^{-\epsilon^{2}}(-4\epsilon^4+12\epsilon^2-3)]$$
+%
+% $$=1.5261+\frac{8}{405}e^{\epsilon^{2}}(4\epsilon^4+12\epsilon^2-3)$$
+%
+% También existen las Formulas cerradas de Newton-Cotes Compuestas, las
+% cuales concisten en subidividir el intervalo de integración en varios
+% segmentos del mismo tamaño.
+%
+% * Regla Compuesta del Trapecio.
+%
+% $$\int_a^b f(x) dx =\frac{h}{2}[f(a)+2\sum _{J=1}^{n-1}f(xj)+f(b)]-(b-a)\frac{h^2}{12}f''(u)$$
+%
+% * EJEMPLO
+%
+% $$\int_{-1}^{1} e^{-x^2} dx =\frac{0.2}{2}[e^{-1}+2\sum {J=1}^{4}e^{-x{2j}^{2}}+e^{-1}]-(2)\frac{(0.2)^2}{12}[-2e^{-u^2}(1-2u^2)]$$
+%
+% $$=1.4887+0.0133e^{-u^2}(1-2u^2); -1<u<1$$
+%
+% <https://www.desmos.com/calculator/fyuqxvl7oe> 
+%
+% * Regla Compuesta de Simpson.
+%
+% $$\int_{-1}^{1} e^{-x^2} dx =\frac{h}{3}[f(a)+2\sum {J=1}^{(n/2)-1}f(x{2j})+4\sum {J=1}^{(n/2)}f(x{2j-1})+f(b)]-(b-a)\frac{h^4}{180}f^4(u)$$
+%
+% * EJEMPLO% $$\int_a^b f(x) dx =\frac{0.2}{3}[e^{-1}+2\sum {J=1}^{4}e^{-x{2j}^{2}}+4\sum {J=1}^{5}e^{-(x{2j-1})^{2}}+e^{-1}]-(2)\frac{(0.2)^4}{180}[-4e^{-u^2}(-4^4+12u^2-3)]$$
+%
+% $$=1.4986+0.000071e^{-u^2}(-4u^4+2u^2-3); -1<u<1$$
+%
+% Finalmente se hablara de la Cuadratura Gaussiana, este método nos dice que
+% dada una integral de f(x) evaluada en [a,b] trata de aproximar esta
+% integral por evaluación de la función en determinados puntos por
+% determinadas constantes. Las evaluaciones son a elección pero dichas
+% elecciones tienen restricciones. 
+%
+% $$\int_a^b f(x) dx =\sum {i=1}^{n}C{i}F(x_{i}); 2n parametros $$
+% 
+% * EJEMPLO
+%
+% $$\int_{-1}^{1} e^{-x^2} dx \approx e^{-(05773502)^2}+e^{-(-0.57773502)^2}//(n=2)$$
+%  
+% $$\approx1.4331$$
+%
+% $$\int_{-1}^{1} e^{-x^2} dx \approx 0.555555556e^{-(0.77459)^2}+0.888888889+0.555555559e^{-(0.77459)^2}//(n=3)$$
+%
+% $$\approx1.4986$$
+%
+% <https://www.desmos.com/calculator/9ze7gypnev>
+%
+%% Entregable 1 Analitico
+%
+c1=@(t) 0.*(t<=-1)+(((t-1)+(2./exp(t+1))).*(t>-1 & t<=0))+((t-((t-2)./exp(1))-1).*(t>0 & t<=1))+((-(t-2)./exp(1)).*(t>1 & t<= 2))+ 0.*(t>2);
+t=[-2:0.01:2];
+plot(t,c1(t))
+%% Entregable 2 Analitico
+c2=@(t) (0.*(t<=-4))+((-4-t).*(t>-4 & t<=-3))+((t+2).*(t>-3 & t<=-1))+((3.*t+4).*(t>-1 & t<0))+((t).*(t==0))+((-3.*t+4).*(t>0 & t<=1))+((2-t).*(t>1 & t<=3))+((t-4).*(t>3 & t<=4))+(0.*(t>4));
+t=[-6:0.1:6];
+plot (t,c2(t))
+%%  Entregable 1
+%
+% Para el PR04 reporte la grafica de la simulación númerica de la convolución
+% y compare con el resultado análitico que obtuvo para el problema 1
+% su práctica tendrá que incluir una llamada a la funciónn convconm
+%  y posteriormente se tendrá que mostrar (mediante el Publish) la gráfica 
+% tanto de las señales involucradas como el resultado de la convolución
+% 
+% La funcion Fija sera X(t)
+%
+% La funcion Movil sera F(t)
+
+F=@(t) 1*t.*(t>=-1 & t<1);
+X=@(t) exp(-t).*(t>=0 & t<=1);
+convconm1 (F,X);
+%%
+% 
+% <<PR04.GIF>>
+% 
+
+
+%% Entregable 2
+% Para el PR05 reporte la grafica de la simulación númerica de la correalción
+% y compare con el resultado análitico que obtuvo para el problema e)
+% su práctica tendrá que incluir una llamada a la funciónn convconm y 
+% posteriormente se tendrá que mostrar (mediante el Publish) la gráfica tanto
+% de las señales involucradas como el resultado de su correlación, y en esta 
+% última graficara su resultado analitico, se tendrá que incluir el resultado analitico.
+%
+% La funcion fija sera U(x)
+%
+% L a funcion movil sera G(x)
+
+G=@(t) (t>=1&t<3)+(-1.*(t>=3&t<4));
+U=@(t) (-1.*(t>=-4 & t<-3))+(t>=-3&t<0);
+convconm(G,U);
+%%
+% 
+% <<PR05.GIF>>
+% 
+
+%% Entregable 3
+%
+% Realice la simuación de la convolución de las señales (c) 
+% con (d) del problema 3.1.1
+% 
+% 
+% C(t) sera la funcion Fija
+% D(t) sera la funcion Movil
+ n=-4:4;
+c1= [0 -9 -6 -3 0 3 6 9 0 ];
+d1=[0 0 4 2 0 2 4 0 0 ];
+ convdisc1([n;c1],[n;d1]);
+ %%
+ % 
+ % <<3.1.1CONVOLUCION.GIF>>
+ % 
+ 
+ %% Entregable 4
+ % Realice la simuación de la correlación de las señales
+ % (c) con (d) del problema 3.1.1
+ % 
+ % C(t) sera la funcion Fija
+ % 
+ % D(t) sera la funcion Movil
+ nc=-4:4;
+c2= [0 -9 -6 -3 0 3 6 9 0 ];
+d2=[0 0 4 2 0 2 4 0 0 ];
+convdisc12( [nc;c2], [nc;-d2] );
+%%
+% 
+% <<3.1.1COORELACION.GIF>>
+% 
+
+%% Entregable 5
+% Reaice la la convolución de las señales (c) con (d) del problema 3.1.1% utilizando el comando conv de MATLAB, muestre el código utilizado y gráfique
+% el resultado, sugerencia: Utilice las propiedades de traslación de la convolución.
+%
+nc=-4:4;
+c3= [0 -9 -6 -3 0 3 6 9 0 ];
+d4=[0 0 4 2 0 2 4 0 0 ];
+y= conv (c3,d4)
+stem ([1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17],y)
+
+
+ 
+
+
+##### SOURCE END #####
+--></body></html>
