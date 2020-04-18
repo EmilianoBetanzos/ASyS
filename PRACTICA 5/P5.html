@@ -1,0 +1,579 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Practica 5</title><meta name="generator" content="MATLAB 9.7"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-04-17"><meta name="DC.source" content="Untitled2.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Practica 5</h1><!--introduction--><p>INTEGRANTES:</p><div><ul><li>Garcia Becerril Luis Angel Ian</li><li>Rosales Perez Paola Monserrat</li><li>Betanzos Fernando Melvin Emiliano</li></ul></div><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Objetivos</a></li><li><a href="#2">Introduccion</a></li><li><a href="#3">Ejemplo 6.1-4 Armonicos</a></li><li><a href="#5">Ejemplo 6.1-15 Armonicos</a></li><li><a href="#7">Ejemplo 6.2-4 Armonicos</a></li><li><a href="#9">Ejemplo 6.2-15 Armonicos</a></li><li><a href="#11">Ejemplo 6.4-4 Armonicos</a></li><li><a href="#13">Ejemplo 6.4-15 Armonicos</a></li><li><a href="#15">Ejemplo 6.5- 4 armonicos</a></li><li><a href="#17">Ejemplo6.5-15 armonicos</a></li><li><a href="#19">Ejemplo 6.7-4 armonicos</a></li><li><a href="#21">Ejemplo 6.7- 15 armonicos</a></li><li><a href="#23">C6.2 Ejemplo 6.2</a></li><li><a href="#24">Entregable 7</a></li></ul></div><h2 id="1">Objetivos</h2><div><ul><li>Realizar gr&aacute;ficas de series de Fourier exponenciales y trigonom&eacute;tricas en tiempo continuo</li></ul></div><div><ul><li>Manipulaci&oacute;n de instrucciones en MATLAB</li></ul></div><div><ul><li>Calculo n&uacute;merico de los coeficientes de Fourier</li></ul></div><h2 id="2">Introduccion</h2><p>Sabemos que existen diferentes formas para aproximar una integral definida.Entre ellas se encuentran las siguientes.</p><div><ul><li>El Teorema Fundamental del C&aacute;lculo es uno de ellos, este m&eacute;todo junta los estudios de integreaci&oacute;n y derivaci&oacute;n, determinando as&iacute; que ambos procesos son inversos.</li></ul></div><div><ul><li>Formulas de Newton-Cotes,&eacute;ste m&eacute;todo consiste en usar un polinomio de aproximaci&oacute;n en vez de una la funci&oacute;n la cual podria resultar m&aacute;s complicada.</li></ul></div><p>Regla del Trapecio.</p><p>Regla de Simpson.</p><p>Regla de tres octavos de Simpson.</p><div><ul><li>Formulas cerradas de Newton-Cotes Compuestas, las cuales concisten en subidividir el intervalo de integraci&oacute;n en varios segmentos del mismo tama&ntilde;o.</li></ul></div><p>Regla Compuesta del Trapecio.</p><p>Regla Compuesta de Simpson.</p><div><ul><li>Cuadratura Gaussiana, este m&eacute;todo nos dice que dada una integral de f(x) evaluada en [a,b] trata de aproximar esta integral por evaluaci&oacute;n de la funci&oacute;n en determinados puntos por determinadas constantes. Las evaluaciones son a elecci&oacute;n pero dichas elecciones tienen restricciones.</li></ul></div><p>Podemos calcular n&uacute;mericamente Dn usando la transformada discreta de fourier. El intervalo de muestreo es T segundos. Por lo tanto, hay <img src="Untitled2_eq17183940120790962915.png" alt="$$N_{0} =\frac{T_{0}}{T}$"> n&uacute;mero de muestras en un per&iacute;odo <img src="Untitled2_eq06981539848353791525.png" alt="$$T_{0}$">.</p><p><img src="Untitled2_eq12474207635310475363.png" alt="$$\frac{1}{T_{0}}\int_{T_{0}}^{} x(t) e^{-jnw_{0}t}dt$$"></p><p><img src="Untitled2_eq05354599216924309752.png" alt="$$N_{0}=\frac{T_{0}}{T}$$"></p><p><img src="Untitled2_eq03897628599995381642.png" alt="$$\Omega_{0}=w_{0}T$$"></p><p>T distinto de cero producir&aacute; alg&uacute;n error de c&aacute;lculo, que es inevitable en cualquier evaluaci&oacute;n num&eacute;rica de una integral. El error resultante de T distinto de cero se denomina error de alias. Por lo tanto podemos expresar la ecuaci&oacute;n como:</p><p><img src="Untitled2_eq13621413596761752522.png" alt="$$D_{n}=\frac{1}{N_{0}}\sum_{k=0}^{N_{0}-1} x(kT)e^{-jn\Omega_{0}k}$$"></p><p><img src="Untitled2_eq15753891163108455031.png" alt="$$D_{N_{0}+n}=D_{n}$$"></p><h2 id="3">Ejemplo 6.1-4 Armonicos</h2><div><ol><li>Gr&aacute;fica de la serie de Fourier en un intervalo que muestre 5 repeticiones</li><li>Gr&aacute;fica de la se&ntilde;al y la serie de Fourier para 4 armonicos</li><li>Gr&aacute;fica del error</li><li>Gr&aacute;fica de la energ&iacute;a del error</li><li>Espectro de magnitud para 4 armonicos</li><li>Espectro de fase para 4 armonicos</li></ol></div><pre class="codeinput">close <span class="string">all</span>;
+clear <span class="string">all</span>;
+d0=0.504;
+dn=@(n) 0.504*(2/(1+16*n^2));
+bn=@(n) 0.504*((8*n)/(1+16*n^2));
+t0=0;
+tf=pi;
+f=@(t) exp(-t/2);
+armo=4;
+a=-pi;
+b=4*pi;
+</pre><pre class="codeinput">sfc(t0,tf,dn,d0,f,armo,a,b,bn)
+</pre><img vspace="5" hspace="5" src="Untitled2_01.png" alt=""> <h2 id="5">Ejemplo 6.1-15 Armonicos</h2><div><ol><li>Todo lo anterior para 15 armonicos</li></ol></div><pre class="codeinput">close <span class="string">all</span>;
+clear <span class="string">all</span>;
+d0=0.504;
+dn=@(n) 0.504*(2/(1+16*n^2));
+bn=@(n) 0.504*((8*n)/(1+16*n^2));
+t0=0;
+tf=pi;
+f=@(t) exp(-t/2);
+armo=15;
+a=-7;
+b=7;
+</pre><pre class="codeinput">sfc1(t0,tf,dn,d0,f,armo,a,b,bn);
+</pre><img vspace="5" hspace="5" src="Untitled2_02.png" alt=""> <h2 id="7">Ejemplo 6.2-4 Armonicos</h2><div><ol><li>Gr&aacute;fica de la serie de Fourier en un intervalo que muestre 5 repeticiones</li><li>Gr&aacute;fica de la se&ntilde;al y la serie de Fourier para 4 armonicos</li><li>Gr&aacute;fica del error</li><li>Gr&aacute;fica de la energ&iacute;a del error</li><li>Espectro de magnitud para 4 armonicos</li><li>Espectro de fase para 4 armonicos</li></ol></div><pre class="codeinput">close <span class="string">all</span>;
+clear <span class="string">all</span>;
+d01=0;
+dn1=@(n) (3*exp(-(pi*n*3i)/2)*(exp(pi*n*1i) - 1)*(2 + pi*n*1i + n*pi*exp(pi*n*1i)*1i - 2*exp(pi*n*1i)))/(2*n^2*pi^2);
+t01=-1;
+tf1=1;
+f1=@(t) (6*(-1-t).*((t&gt;=-1)&amp;(t&lt;-0.5)))+((6*t).*((t&gt;=-0.5)&amp;(t&lt;0.5)))+(6*(1-t).*((t&gt;=0.5)&amp;(t&lt;1.5)));
+armo1=4;
+a1=-7;
+b1=7;
+</pre><pre class="codeinput">sfc2(t01,tf1,dn1,d01,f1,armo1,a1,b1);
+</pre><img vspace="5" hspace="5" src="Untitled2_03.png" alt=""> <h2 id="9">Ejemplo 6.2-15 Armonicos</h2><pre class="codeinput">close <span class="string">all</span>;
+clear <span class="string">all</span>;
+clc;
+d01=0;
+dn1=@(n) (3*exp(-(pi*n*3i)/2)*(exp(pi*n*1i) - 1)*(2 + pi*n*1i + n*pi*exp(pi*n*1i)*1i - 2*exp(pi*n*1i)))/(2*n^2*pi^2);
+t01=-1;
+tf1=1;
+f1=@(t) (6*(-1-t).*((t&gt;=-1)&amp;(t&lt;-0.5)))+((6*t).*((t&gt;=-0.5)&amp;(t&lt;0.5)))+(6*(1-t).*((t&gt;=0.5)&amp;(t&lt;1.5)));
+armo1=15;
+a1=-7;
+b1=7;
+</pre><pre class="codeinput">sfc3(t01,tf1,dn1,d01,f1,armo1,a1,b1);
+</pre><img vspace="5" hspace="5" src="Untitled2_04.png" alt=""> <h2 id="11">Ejemplo 6.4-4 Armonicos</h2><div><ol><li>Gr&aacute;fica de la serie de Fourier en un intervalo que muestre 5 repeticiones</li><li>Gr&aacute;fica de la se&ntilde;al y la serie de Fourier para 4 armonicos</li><li>Gr&aacute;fica del error</li><li>Gr&aacute;fica de la energ&iacute;a del error</li><li>Espectro de magnitud para 4 armonicos</li><li>Espectro de fase para 4 armonicos</li></ol></div><pre class="codeinput">close <span class="string">all</span>;
+clear <span class="string">all</span>;
+d0=1/2;
+dn=@(n) -(exp(-(pi.*n.*j)./2).*(exp(pi.*n.*j) - 1).*5734161139222659i)./(36028797018963968.*n);
+t0=-pi;
+tf=pi;
+f=@(t) ((0).*((t&gt;=-pi)&amp;(t&lt;pi/2)))+((1).*((t&gt;=-pi/2)&amp;(t&lt;pi/2)))+((0).*((t&gt;=pi/2)&amp;(t&lt;pi)));
+armo=4;
+a=-7;
+b=7;
+</pre><pre class="codeinput">sfc4(t0,tf,dn,d0,f,armo,a,b);
+</pre><img vspace="5" hspace="5" src="Untitled2_05.png" alt=""> <h2 id="13">Ejemplo 6.4-15 Armonicos</h2><pre class="codeinput">close <span class="string">all</span>;
+clear <span class="string">all</span>;
+d0=1/2;
+dn=@(n) -(exp(-(pi.*n.*j)./2).*(exp(pi.*n.*j) - 1).*5734161139222659i)./(36028797018963968.*n);
+t0=-pi;
+tf=pi;
+f=@(t) ((0).*((t&gt;=-pi)&amp;(t&lt;pi/2)))+((1).*((t&gt;=-pi/2)&amp;(t&lt;pi/2)))+((0).*((t&gt;=pi/2)&amp;(t&lt;pi)));
+armo=15;
+a=-7;
+b=7;
+</pre><pre class="codeinput">sfc5(t0,tf,dn,d0,f,armo,a,b);
+</pre><img vspace="5" hspace="5" src="Untitled2_06.png" alt=""> <h2 id="15">Ejemplo 6.5- 4 armonicos</h2><div><ol><li>Gr&aacute;fica de la serie de Fourier en un intervalo que muestre 5 repeticiones</li><li>Gr&aacute;fica de la se&ntilde;al y la serie de Fourier para 4 armonicos</li><li>Gr&aacute;fica del error</li><li>Gr&aacute;fica de la energ&iacute;a del error</li><li>Espectro de magnitud para 4 armonicos</li><li>Espectro de fase para 4 armonicos</li></ol></div><pre class="codeinput">close <span class="string">all</span>;
+clear <span class="string">all</span>;
+d0=0.504;
+dn=@(n) 0.504/(1+4*n*j);
+t0=0;
+tf=pi;
+f=@(t) exp(-t/2);
+armo=4;
+a=-7;
+b=7;
+</pre><pre class="codeinput">sfc6(t0,tf,dn,d0,f,armo,a,b);
+</pre><img vspace="5" hspace="5" src="Untitled2_07.png" alt=""> <h2 id="17">Ejemplo6.5-15 armonicos</h2><pre class="codeinput">close <span class="string">all</span>;
+clear <span class="string">all</span>;
+d0=0.504;
+dn=@(n) 0.504/(1+4*n*j);
+t0=0;
+tf=pi;
+f=@(t) exp(-t/2);
+armo=15;
+a=-7;
+b=7;
+</pre><pre class="codeinput">sfc7(t0,tf,dn,d0,f,armo,a,b);
+</pre><img vspace="5" hspace="5" src="Untitled2_08.png" alt=""> <h2 id="19">Ejemplo 6.7-4 armonicos</h2><div><ol><li>Gr&aacute;fica de la serie de Fourier en un intervalo que muestre 5 repeticiones</li><li>Gr&aacute;fica de la se&ntilde;al y la serie de Fourier para 4 armonicos</li><li>Gr&aacute;fica del error</li><li>Gr&aacute;fica de la energ&iacute;a del error</li><li>Espectro de magnitud para 4 armonicos</li><li>Espectro de fase para 4 armonicos</li></ol></div><pre class="codeinput">close <span class="string">all</span>;
+clear <span class="string">all</span>;
+d0=1/3;
+dn=@(n) 1/3;
+t0=0;
+tf=3;
+f=@(t) dirac(t);
+armo=4;
+a=-7;
+b=7;
+</pre><pre class="codeinput">sfc8(t0,tf,dn,d0,f,armo,a,b);
+</pre><img vspace="5" hspace="5" src="Untitled2_09.png" alt=""> <h2 id="21">Ejemplo 6.7- 15 armonicos</h2><pre class="codeinput">close <span class="string">all</span>;
+clear <span class="string">all</span>;
+d0=1/3;
+dn=@(n) 1/3;
+t0=0;
+tf=3;
+f=@(t) dirac(t);
+armo=15;
+a=-7;
+b=7;
+</pre><pre class="codeinput">sfc9(t0,tf,dn,d0,f,armo,a,b);
+</pre><img vspace="5" hspace="5" src="Untitled2_10.png" alt=""> <h2 id="23">C6.2 Ejemplo 6.2</h2><pre class="codeinput">close <span class="string">all</span>;
+clear <span class="string">all</span>;
+A=3;
+f=@(t) 2.*A.*t.*(t&gt;=-1/2 &amp; t&lt;=1/2);
+g=@(t) 2.*A.*(1-t).*(t&gt;1/2 &amp; t&lt;=3/2);
+x=@(t) f(t)+g(t);
+t = [-1/2:0.001:3/2];
+sumterms = zeros(16,length(t));
+sumterms(1,:) = 0;
+<span class="keyword">for</span> n = 1:size(sumterms,1)-1;
+  sumterms(n+1,:) = (8.*A)./(n.^2.*pi.^2).*sin(n.*pi./2).*sin(n.*pi.*t);
+<span class="keyword">end</span>
+x_N = cumsum(sumterms);
+figure(1);
+clf;
+ind = 0;
+<span class="keyword">for</span> N = [0,1:2:size(sumterms, 1)-1],
+  ind = ind+1;
+  subplot (3,3,ind);
+  plot(t,x_N(N+1,:),<span class="string">'k'</span>,t,x(t), <span class="string">'k--'</span>);
+  axis([-1/2 3/2 -4 4]);
+  xlabel(<span class="string">'t'</span>);
+  ylabel([<span class="string">'x_{'</span>,num2str(N),<span class="string">'} (t)'</span>]);
+<span class="keyword">end</span>
+</pre><img vspace="5" hspace="5" src="Untitled2_11.png" alt=""> <h2 id="24">Entregable 7</h2><p>Elabore un c&oacute;digo que implemente el algoritmo de trapecio compuesto para <img src="Untitled2_eq08501079337458606022.png" alt="$n=15$">, Utilice este c&oacute;digo para aproximar <img src="Untitled2_eq12324390629844581234.png" alt="$D_0,...,D_4$"> del ejemplo de la pr&aacute;ctica. Ahora implemente el c&oacute;digo COMPUTER EXAMPLE C6.4 que se encuentra al final de la secci&oacute;n 6.6 de Lathi, y calcule nuevamente el los coeficientes <img src="Untitled2_eq12324390629844581234.png" alt="$D_0,...,D_4$"> del ejemplo propuesto. Muestre una tabla que contenga los coeficientes mencionados calculados con los dos algoritmos y de forma exacta, &iquest;Qu&eacute; algortmo aproxima mejor a los coeficientes?, para esto compare los coefientes con el valor absoluto de la resta.</p><p>Dn anal&iacute;tico</p><pre class="codeinput">close <span class="string">all</span>;
+clear <span class="string">all</span>;
+ n=[0:4]';
+ DnAn = (0.504)./(1+4.*n.*j);
+
+<span class="comment">% Dn Lathi</span>
+T_0 = pi;
+N_0 = 5;
+T = T_0/N_0;
+t = (0:T:T*(N_0-1))';
+x = exp(-t/2);
+x(1) = (exp(-pi/2) + 1)/2;
+DnLathi= fft (x)/N_0;
+<span class="comment">% Dn Trapecio</span>
+syms <span class="string">t</span>;
+trap=15;
+f=@(t) exp(-t/2);
+Tcer=pi;
+wcer=2;
+a=0;
+b=pi;
+n=[0:4]';
+DnTrapecio= (1/Tcer).*Trapecio(f(t).*cos(n.*wcer.*t),a,b,trap) - j.*(1/Tcer).*Trapecio(f(t).*sin(n.*wcer.*t),a,b,trap);
+<span class="comment">% Calculamos el Error de Analitico Vs Lathi</span>
+EAn= abs(DnAn-DnLathi);
+<span class="comment">%Calculamos el Error de Analitico Vs Trapecio compuesto</span>
+EAnT= abs(DnAn-DnTrapecio);
+<span class="comment">% Tabla de resultados</span>
+T = table(n,DnAn,DnLathi,DnTrapecio,EAn,EAnT)
+
+
+<span class="keyword">function</span> [Integral]=Trapecio(funcion,a,b,trapecios)
+h=(b-a)/trapecios;
+f=0;
+<span class="keyword">for</span> t=1:trapecios-1
+ x=a+h*t;
+ f=f+eval(funcion);
+<span class="keyword">end</span>
+f=2*f;
+x=a;
+f=f+eval(funcion);
+x=b;
+f=f+eval(funcion);
+Integral=(h/2)*(f);
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">
+T =
+
+  5&times;6 table
+
+    n           DnAn                 DnLathi              DnTrapecio            EAn         EAnT  
+    _    ___________________    __________________    ___________________    _________    ________
+
+    0        0.504+0i            0.50842+0i             0.10273+0i           0.0044203     0.40127
+    1     0.029647-0.11859i      0.03415-0.1017i      -0.022155-0.019673i     0.017476     0.11166
+    2    0.0077538-0.062031i    0.013609-0.025049i    -0.023505+0.014194i     0.037443    0.082385
+    3    0.0034759-0.04171i     0.013609+0.025049i      0.07036+0.055657i     0.067524     0.11813
+    4    0.0019611-0.031377i     0.03415+0.1017i      -0.019675-0.025823i      0.13692    0.022338
+
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Practica 5
+%
+% INTEGRANTES:
+%
+% 
+% * Garcia Becerril Luis Angel Ian
+% * Rosales Perez Paola Monserrat 
+% * Betanzos Fernando Melvin Emiliano
+%% Objetivos
+% 
+% * Realizar gráficas de series de Fourier exponenciales y trigonométricas en tiempo continuo
+% 
+% * Manipulación de instrucciones en MATLAB
+% 
+% * Calculo númerico de los coeficientes de Fourier
+% 
+%% Introduccion
+% 
+% Sabemos que existen diferentes formas para aproximar una integral definida.Entre ellas se encuentran las siguientes.
+% 
+% * El Teorema Fundamental del Cálculo es uno de ellos, este método junta los estudios de integreación y derivación, determinando así que ambos procesos son inversos.
+% 
+% * Formulas de Newton-Cotes,éste método consiste en usar un polinomio de aproximación en vez de una la función la cual podria resultar más complicada. 
+%
+% Regla del Trapecio.
+% 
+% Regla de Simpson.
+% 
+% Regla de tres octavos de Simpson.
+%
+% * Formulas cerradas de Newton-Cotes Compuestas, las cuales concisten en subidividir el intervalo de integración en varios segmentos del mismo tamaño.
+%
+% Regla Compuesta del Trapecio.
+%
+% Regla Compuesta de Simpson.
+%
+% * Cuadratura Gaussiana, este método nos dice que dada una integral de f(x) evaluada en [a,b] trata de aproximar esta integral por evaluación de la función en determinados puntos por determinadas constantes. Las evaluaciones son a elección pero dichas elecciones tienen restricciones.
+% 
+% Podemos calcular númericamente Dn usando la transformada discreta de
+% fourier. El intervalo de muestreo es T segundos. Por lo tanto, hay $$N_{0} =\frac{T_{0}}{T}$ número de muestras en un período $$T_{0}$. 
+%
+% $$\frac{1}{T_{0}}\int_{T_{0}}^{} x(t) e^{-jnw_{0}t}dt$$
+%
+% $$N_{0}=\frac{T_{0}}{T}$$
+%
+% $$\Omega_{0}=w_{0}T$$
+%
+% T distinto de cero producirá algún error de cálculo, que es inevitable en
+% cualquier evaluación numérica de una integral. El error resultante de T
+% distinto de cero se denomina error de alias. Por lo tanto podemos
+% expresar la ecuación como:
+%
+% $$D_{n}=\frac{1}{N_{0}}\sum_{k=0}^{N_{0}-1} x(kT)e^{-jn\Omega_{0}k}$$
+%
+% $$D_{N_{0}+n}=D_{n}$$
+%
+%% Ejemplo 6.1-4 Armonicos
+%  
+% # Gráfica de la serie de Fourier en un intervalo que muestre 5 repeticiones
+% # Gráfica de la señal y la serie de Fourier para 4 armonicos
+% # Gráfica del error
+% # Gráfica de la energía del error
+% # Espectro de magnitud para 4 armonicos
+% # Espectro de fase para 4 armonicos
+% 
+close all;
+clear all;
+d0=0.504;
+dn=@(n) 0.504*(2/(1+16*n^2));
+bn=@(n) 0.504*((8*n)/(1+16*n^2));
+t0=0;
+tf=pi;
+f=@(t) exp(-t/2);
+armo=4;
+a=-pi;
+b=4*pi;
+%%
+sfc(t0,tf,dn,d0,f,armo,a,b,bn)
+%% Ejemplo 6.1-15 Armonicos
+% 
+% # Todo lo anterior para 15 armonicos
+% 
+close all;
+clear all;
+d0=0.504;
+dn=@(n) 0.504*(2/(1+16*n^2));
+bn=@(n) 0.504*((8*n)/(1+16*n^2));
+t0=0;
+tf=pi;
+f=@(t) exp(-t/2);
+armo=15;
+a=-7;
+b=7;
+%%
+sfc1(t0,tf,dn,d0,f,armo,a,b,bn);
+
+%% Ejemplo 6.2-4 Armonicos
+%  
+% # Gráfica de la serie de Fourier en un intervalo que muestre 5 repeticiones
+% # Gráfica de la señal y la serie de Fourier para 4 armonicos
+% # Gráfica del error
+% # Gráfica de la energía del error
+% # Espectro de magnitud para 4 armonicos
+% # Espectro de fase para 4 armonicos
+% 
+close all;
+clear all;
+d01=0;
+dn1=@(n) (3*exp(-(pi*n*3i)/2)*(exp(pi*n*1i) - 1)*(2 + pi*n*1i + n*pi*exp(pi*n*1i)*1i - 2*exp(pi*n*1i)))/(2*n^2*pi^2);
+t01=-1;
+tf1=1;
+f1=@(t) (6*(-1-t).*((t>=-1)&(t<-0.5)))+((6*t).*((t>=-0.5)&(t<0.5)))+(6*(1-t).*((t>=0.5)&(t<1.5)));
+armo1=4;
+a1=-7;
+b1=7;
+%%
+sfc2(t01,tf1,dn1,d01,f1,armo1,a1,b1);
+%% Ejemplo 6.2-15 Armonicos
+
+close all;
+clear all;
+clc;
+d01=0;
+dn1=@(n) (3*exp(-(pi*n*3i)/2)*(exp(pi*n*1i) - 1)*(2 + pi*n*1i + n*pi*exp(pi*n*1i)*1i - 2*exp(pi*n*1i)))/(2*n^2*pi^2);
+t01=-1;
+tf1=1;
+f1=@(t) (6*(-1-t).*((t>=-1)&(t<-0.5)))+((6*t).*((t>=-0.5)&(t<0.5)))+(6*(1-t).*((t>=0.5)&(t<1.5)));
+armo1=15;
+a1=-7;
+b1=7;
+%%
+sfc3(t01,tf1,dn1,d01,f1,armo1,a1,b1);
+%% Ejemplo 6.4-4 Armonicos
+%  
+% # Gráfica de la serie de Fourier en un intervalo que muestre 5 repeticiones
+% # Gráfica de la señal y la serie de Fourier para 4 armonicos
+% # Gráfica del error
+% # Gráfica de la energía del error
+% # Espectro de magnitud para 4 armonicos
+% # Espectro de fase para 4 armonicos
+% 
+close all;
+clear all;
+d0=1/2;
+dn=@(n) -(exp(-(pi.*n.*j)./2).*(exp(pi.*n.*j) - 1).*5734161139222659i)./(36028797018963968.*n);
+t0=-pi;
+tf=pi;
+f=@(t) ((0).*((t>=-pi)&(t<pi/2)))+((1).*((t>=-pi/2)&(t<pi/2)))+((0).*((t>=pi/2)&(t<pi)));
+armo=4;
+a=-7;
+b=7;
+%%
+sfc4(t0,tf,dn,d0,f,armo,a,b);
+%% Ejemplo 6.4-15 Armonicos
+close all;
+clear all;
+d0=1/2;
+dn=@(n) -(exp(-(pi.*n.*j)./2).*(exp(pi.*n.*j) - 1).*5734161139222659i)./(36028797018963968.*n);
+t0=-pi;
+tf=pi;
+f=@(t) ((0).*((t>=-pi)&(t<pi/2)))+((1).*((t>=-pi/2)&(t<pi/2)))+((0).*((t>=pi/2)&(t<pi)));
+armo=15;
+a=-7;
+b=7;
+%%
+sfc5(t0,tf,dn,d0,f,armo,a,b);
+%% Ejemplo 6.5- 4 armonicos
+%  
+% # Gráfica de la serie de Fourier en un intervalo que muestre 5 repeticiones
+% # Gráfica de la señal y la serie de Fourier para 4 armonicos
+% # Gráfica del error
+% # Gráfica de la energía del error
+% # Espectro de magnitud para 4 armonicos
+% # Espectro de fase para 4 armonicos
+% 
+close all;
+clear all;
+d0=0.504;
+dn=@(n) 0.504/(1+4*n*j);
+t0=0;
+tf=pi;
+f=@(t) exp(-t/2);
+armo=4;
+a=-7;
+b=7;
+%%
+sfc6(t0,tf,dn,d0,f,armo,a,b);
+%% Ejemplo6.5-15 armonicos
+close all;
+clear all;
+d0=0.504;
+dn=@(n) 0.504/(1+4*n*j);
+t0=0;
+tf=pi;
+f=@(t) exp(-t/2);
+armo=15;
+a=-7;
+b=7;
+%%
+sfc7(t0,tf,dn,d0,f,armo,a,b);
+%% Ejemplo 6.7-4 armonicos
+%  
+% # Gráfica de la serie de Fourier en un intervalo que muestre 5 repeticiones
+% # Gráfica de la señal y la serie de Fourier para 4 armonicos
+% # Gráfica del error
+% # Gráfica de la energía del error
+% # Espectro de magnitud para 4 armonicos
+% # Espectro de fase para 4 armonicos
+% 
+close all;
+clear all;
+d0=1/3;
+dn=@(n) 1/3;
+t0=0;
+tf=3;
+f=@(t) dirac(t);
+armo=4;
+a=-7;
+b=7;
+%%
+sfc8(t0,tf,dn,d0,f,armo,a,b);
+%% Ejemplo 6.7- 15 armonicos
+close all;
+clear all;
+d0=1/3;
+dn=@(n) 1/3;
+t0=0;
+tf=3;
+f=@(t) dirac(t);
+armo=15;
+a=-7;
+b=7;
+%%
+sfc9(t0,tf,dn,d0,f,armo,a,b);
+%% C6.2 Ejemplo 6.2
+close all;
+clear all;
+A=3;
+f=@(t) 2.*A.*t.*(t>=-1/2 & t<=1/2);
+g=@(t) 2.*A.*(1-t).*(t>1/2 & t<=3/2);
+x=@(t) f(t)+g(t);
+t = [-1/2:0.001:3/2];
+sumterms = zeros(16,length(t));
+sumterms(1,:) = 0;
+for n = 1:size(sumterms,1)-1;
+  sumterms(n+1,:) = (8.*A)./(n.^2.*pi.^2).*sin(n.*pi./2).*sin(n.*pi.*t);
+end
+x_N = cumsum(sumterms);
+figure(1);
+clf;
+ind = 0;
+for N = [0,1:2:size(sumterms, 1)-1],
+  ind = ind+1;
+  subplot (3,3,ind);
+  plot(t,x_N(N+1,:),'k',t,x(t), 'kREPLACE_WITH_DASH_DASH');
+  axis([-1/2 3/2 -4 4]);
+  xlabel('t');
+  ylabel(['x_{',num2str(N),'} (t)']);
+end
+
+%% Entregable 7
+%
+% Elabore un código que implemente el algoritmo de trapecio compuesto para $n=15$, Utilice este código para aproximar $D_0,...,D_4$ del ejemplo de la práctica. Ahora implemente el código COMPUTER EXAMPLE C6.4 que se encuentra al final de la sección 6.6 de Lathi, y calcule nuevamente el los coeficientes $D_0,...,D_4$ del ejemplo propuesto. Muestre una tabla que contenga los coeficientes mencionados calculados con los dos algoritmos y de forma exacta, ¿Qué algortmo aproxima mejor a los coeficientes?, para esto compare los coefientes con el valor absoluto de la resta.
+%
+% Dn analítico
+close all;
+clear all;
+ n=[0:4]';
+ DnAn = (0.504)./(1+4.*n.*j);
+ 
+% Dn Lathi
+T_0 = pi;
+N_0 = 5;
+T = T_0/N_0;
+t = (0:T:T*(N_0-1))';
+x = exp(-t/2);
+x(1) = (exp(-pi/2) + 1)/2;
+DnLathi= fft (x)/N_0;
+% Dn Trapecio
+syms t;
+trap=15;
+f=@(t) exp(-t/2);
+Tcer=pi;
+wcer=2;
+a=0;
+b=pi;
+n=[0:4]';
+DnTrapecio= (1/Tcer).*Trapecio(f(t).*cos(n.*wcer.*t),a,b,trap) - j.*(1/Tcer).*Trapecio(f(t).*sin(n.*wcer.*t),a,b,trap);
+% Calculamos el Error de Analitico Vs Lathi
+EAn= abs(DnAn-DnLathi);
+%Calculamos el Error de Analitico Vs Trapecio compuesto
+EAnT= abs(DnAn-DnTrapecio);
+% Tabla de resultados
+T = table(n,DnAn,DnLathi,DnTrapecio,EAn,EAnT)
+
+
+function [Integral]=Trapecio(funcion,a,b,trapecios)
+h=(b-a)/trapecios;
+f=0;
+for t=1:trapecios-1
+ x=a+h*t;
+ f=f+eval(funcion);
+end
+f=2*f;
+x=a;
+f=f+eval(funcion);
+x=b;
+f=f+eval(funcion);
+Integral=(h/2)*(f);
+end
+
+##### SOURCE END #####
+--></body></html>
