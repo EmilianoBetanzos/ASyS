@@ -1,0 +1,1196 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>P06 Sistemas Diferenciales y en Diferencias</title><meta name="generator" content="MATLAB 9.7"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-05-29"><meta name="DC.source" content="Untitled2.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>P06 Sistemas Diferenciales y en Diferencias</h1><!--introduction--><p>INTEGRANTES:</p><div><ul><li>Garcia Becerril Luis Angel Ian</li><li>Rosales Perez Paola Monserrat</li><li>Betanzos Fernando Melvin Emiliano</li></ul></div><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Objetivos:</a></li><li><a href="#2">Sistemas Diferneciales continuos</a></li><li><a href="#3">1.1</a></li><li><a href="#4">1.2</a></li><li><a href="#5">1.3</a></li><li><a href="#6">1.4</a></li><li><a href="#7">1.5</a></li><li><a href="#8">1.6</a></li><li><a href="#9">Queremos resolver el siguiente sistema:</a></li><li><a href="#10">Primer problema sistema discreto</a></li><li><a href="#11">Segundo problema sistema discreto</a></li><li><a href="#12">Transferencia discreto</a></li><li><a href="#13">Apendice 1 Laplace</a></li><li><a href="#14">Apendice 2 Funcion de transferencia</a></li><li><a href="#15">Apendice 3 Entrada0</a></li><li><a href="#16">Apendice 4</a></li><li><a href="#17">tranferencia discreta</a></li></ul></div><h2 id="1">Objetivos:</h2><p>Resolver sistemas diferenciales y en diferencias mediante un progama que facilite los calculos dentro de matlab.</p><h2 id="2">Sistemas Diferneciales continuos</h2><p>De la ecuacion</p><p><img vspace="5" hspace="5" src="Imagen1.png" alt=""> </p><p>encuentre:</p><p>1 Muestra la funci&oacute;n de transferencia del sistema</p><p>2 Muestra la respuesta al impulso (simb&oacute;lico, gr&aacute;fica)</p><p>3 Muestra la respuesta a entrada cero (simb&oacute;lico, gr&aacute;fica)</p><p>4 Muestra la respuesta a estado cero (simb&oacute;lico, gr&aacute;fica)</p><p>5 Muestra la respuesta total (simb&oacute;lico, gr&aacute;fica)</p><p>6 La respuesta total al escal&oacute;n con condiciones iniciales 0 (simb&oacute;lico, gr&aacute;fica)</p><p>7 Usando subplot, depliega una figura con 5 gr&aacute;ficas</p><h2 id="3">1.1</h2><p>Muestra la funci&oacute;n de transferencia del sistema</p><pre class="codeinput">x = cos(2*t)
+transferencia([3,2,1],[-1 1],[0 1],x,10)
+</pre><pre class="codeoutput"> 
+x =
+ 
+cos(2*t)
+ 
+ 
+APLICAMOS TRANSFORMADA DE LAPLACE y subtituimos condiciones iniciales
+ 
+                     2
+3 Y(s) + 2 s Y(s) + s  Y(s) - 1
+
+=
+s X(s) - X(s)
+
+ 
+SUBSTITUIMOS LA TRANSFORMADA DE LA ENTRADA
+ 
+                     2
+3 Y(s) + 2 s Y(s) + s  Y(s) - 1
+
+=
+   2
+  s         s
+------ - ------
+ 2        2
+s  + 4   s  + 4
+
+ 
+DESPEJAMOS Y(s)
+ 
+Y(s)=
+           2
+        2 s  - s + 4
+---------------------------
+ 4      3      2
+s  + 2 s  + 7 s  + 8 s + 12
+
+ 
+DESARROLLAMOS LAS FRACCIONES PARCIALES DE Y(s)
+ 
+Y(s)=
+9 s    4     9 s   20
+--- - --     --- - --
+ 17   17      17   17
+-------- - ------------
+  2         2
+ s  + 4    s  + 2 s + 3
+
+ 
+Una vez encontrada mi Y(S) Ahota encontraremos H(s)
+ 
+H(s)=
+ 
+la =
+ 
+s/(s^2 + 4)
+ 
+      2          2
+    (s  + 4) (2 s  - s + 4)
+-------------------------------
+    4      3      2
+s (s  + 2 s  + 7 s  + 8 s + 12)
+
+</pre><img vspace="5" hspace="5" src="Untitled2_01.png" alt=""> <h2 id="4">1.2</h2><p>Muestra la respuesta al impulso (simb&oacute;lico, gr&aacute;fica)</p><pre class="codeinput">syms <span class="string">t</span>
+laplace2016a([3,2,1],[-1 1],[0 1],heaviside(t),10)
+</pre><pre class="codeoutput"> 
+APLICAMOS TRANSFORMADA DE LAPLACE y subtituimos condiciones iniciales
+ 
+                     2
+3 Y(s) + 2 s Y(s) + s  Y(s) - 1
+
+=
+s X(s) - X(s)
+
+ 
+SUBSTITUIMOS LA TRANSFORMADA DE LA ENTRADA
+ 
+                     2
+3 Y(s) + 2 s Y(s) + s  Y(s) - 1
+
+=
+    1
+1 - -
+    s
+
+ 
+DESPEJAMOS Y(s)
+ 
+Y(s)=
+      1
+      - - 2
+      s
+- ------------
+   2
+  s  + 2 s + 3
+
+ 
+DESARROLLAMOS LAS FRACCIONES PARCIALES DE Y(s)
+ 
+Y(s)=
+    s   8
+    - + -
+    3   3       1
+------------ - ---
+ 2             3 s
+s  + 2 s + 3
+
+ 
+Aplicamos transformada inversa, asi la soluci&oacute;n es
+ 
+y(t)=
+        /                  7 sqrt(2) sin(sqrt(2) t) \
+exp(-t) | cos(sqrt(2) t) + ------------------------ |
+        \                              2            /   1
+----------------------------------------------------- - -
+                          3                             3
+
+</pre><img vspace="5" hspace="5" src="Untitled2_02.png" alt=""> <h2 id="5">1.3</h2><p>Muestra la respuesta a entrada cero (simb&oacute;lico, gr&aacute;fica)</p><pre class="codeinput">syms <span class="string">t</span>
+x = cos(2*t)
+edo0([3,2,1],[-1 1],[0 1],0,10)
+</pre><pre class="codeoutput"> 
+x =
+ 
+cos(2*t)
+ 
+ 
+APLICAMOS TRANSFORMADA DE LAPLACE y subtituimos condiciones iniciales
+ 
+                     2
+3 Y(s) + 2 s Y(s) + s  Y(s) - 1
+
+=
+s X(s) - X(s)
+
+ 
+SUBSTITUIMOS LA TRANSFORMADA DE LA ENTRADA
+ 
+
+edi =
+
+     0
+
+ 
+DESPEJAMOS Y(s)
+ 
+Y(s)=
+      1
+------------
+ 2
+s  + 2 s + 3
+
+ 
+DESARROLLAMOS LAS FRACCIONES PARCIALES DE Y(s)
+ 
+Y(s)=
+      1
+------------
+ 2
+s  + 2 s + 3
+
+ 
+Aplicamos transformada inversa, asi la soluci&oacute;n es
+ 
+y(t)=
+sqrt(2) exp(-t) sin(sqrt(2) t)
+------------------------------
+               2
+
+</pre><img vspace="5" hspace="5" src="Untitled2_03.png" alt=""> <h2 id="6">1.4</h2><p>Muestra la respuesta a estado cero (simb&oacute;lico, gr&aacute;fica)</p><pre class="codeinput">syms <span class="string">t</span>
+x = cos(2*t)
+laplace2016a([3,2,1],[-1 1],[0 0],x,10)
+</pre><pre class="codeoutput"> 
+x =
+ 
+cos(2*t)
+ 
+ 
+APLICAMOS TRANSFORMADA DE LAPLACE y subtituimos condiciones iniciales
+ 
+                     2
+3 Y(s) + 2 s Y(s) + s  Y(s)
+
+=
+s X(s) - X(s)
+
+ 
+SUBSTITUIMOS LA TRANSFORMADA DE LA ENTRADA
+ 
+                     2
+3 Y(s) + 2 s Y(s) + s  Y(s)
+
+=
+   2
+  s         s
+------ - ------
+ 2        2
+s  + 4   s  + 4
+
+ 
+DESPEJAMOS Y(s)
+ 
+Y(s)=
+         s (s - 1)
+---------------------------
+ 4      3      2
+s  + 2 s  + 7 s  + 8 s + 12
+
+ 
+DESARROLLAMOS LAS FRACCIONES PARCIALES DE Y(s)
+ 
+Y(s)=
+9 s    4     9 s    3
+--- - --     --- - --
+ 17   17      17   17
+-------- - ------------
+  2         2
+ s  + 4    s  + 2 s + 3
+
+ 
+Aplicamos transformada inversa, asi la soluci&oacute;n es
+ 
+y(t)=
+cos(2 t) 9   sin(2 t) 2
+---------- - ----------
+    17           17
+
+             /                  2 sqrt(2) sin(sqrt(2) t) \
+     exp(-t) | cos(sqrt(2) t) - ------------------------ | 9
+             \                              3            /
+   - -------------------------------------------------------
+                                17
+
+</pre><img vspace="5" hspace="5" src="Untitled2_04.png" alt=""> <h2 id="7">1.5</h2><pre>Muestra la respuesta total (simb&oacute;lico, gr&aacute;fica)</pre><pre class="codeinput">syms <span class="string">t</span>
+x = cos(2*t)
+laplace2016a([3,2,1],[-1 1],[0 1],x,10)
+</pre><pre class="codeoutput"> 
+x =
+ 
+cos(2*t)
+ 
+ 
+APLICAMOS TRANSFORMADA DE LAPLACE y subtituimos condiciones iniciales
+ 
+                     2
+3 Y(s) + 2 s Y(s) + s  Y(s) - 1
+
+=
+s X(s) - X(s)
+
+ 
+SUBSTITUIMOS LA TRANSFORMADA DE LA ENTRADA
+ 
+                     2
+3 Y(s) + 2 s Y(s) + s  Y(s) - 1
+
+=
+   2
+  s         s
+------ - ------
+ 2        2
+s  + 4   s  + 4
+
+ 
+DESPEJAMOS Y(s)
+ 
+Y(s)=
+           2
+        2 s  - s + 4
+---------------------------
+ 4      3      2
+s  + 2 s  + 7 s  + 8 s + 12
+
+ 
+DESARROLLAMOS LAS FRACCIONES PARCIALES DE Y(s)
+ 
+Y(s)=
+9 s    4     9 s   20
+--- - --     --- - --
+ 17   17      17   17
+-------- - ------------
+  2         2
+ s  + 4    s  + 2 s + 3
+
+ 
+Aplicamos transformada inversa, asi la soluci&oacute;n es
+ 
+y(t)=
+cos(2 t) 9   sin(2 t) 2
+---------- - ----------
+    17           17
+
+             /                  29 sqrt(2) sin(sqrt(2) t) \
+     exp(-t) | cos(sqrt(2) t) - ------------------------- | 9
+             \                              18            /
+   - --------------------------------------------------------
+                                17
+
+</pre><img vspace="5" hspace="5" src="Untitled2_05.png" alt=""> <h2 id="8">1.6</h2><p>La respuesta total al escal&oacute;n con condiciones iniciales 0 (simb&oacute;lico, gr&aacute;fica)</p><pre class="codeinput">syms <span class="string">t</span>
+laplace2016a([3,2,1],[-1,1],[0 1],heaviside(t),10)
+sympref(<span class="string">'HeavisideAtOrigin'</span>, 1);
+</pre><pre class="codeoutput"> 
+APLICAMOS TRANSFORMADA DE LAPLACE y subtituimos condiciones iniciales
+ 
+                     2
+3 Y(s) + 2 s Y(s) + s  Y(s) - 1
+
+=
+s X(s) - X(s)
+
+ 
+SUBSTITUIMOS LA TRANSFORMADA DE LA ENTRADA
+ 
+                     2
+3 Y(s) + 2 s Y(s) + s  Y(s) - 1
+
+=
+    1
+1 - -
+    s
+
+ 
+DESPEJAMOS Y(s)
+ 
+Y(s)=
+      1
+      - - 2
+      s
+- ------------
+   2
+  s  + 2 s + 3
+
+ 
+DESARROLLAMOS LAS FRACCIONES PARCIALES DE Y(s)
+ 
+Y(s)=
+    s   8
+    - + -
+    3   3       1
+------------ - ---
+ 2             3 s
+s  + 2 s + 3
+
+ 
+Aplicamos transformada inversa, asi la soluci&oacute;n es
+ 
+y(t)=
+        /                  7 sqrt(2) sin(sqrt(2) t) \
+exp(-t) | cos(sqrt(2) t) + ------------------------ |
+        \                              2            /   1
+----------------------------------------------------- - -
+                          3                             3
+
+</pre><img vspace="5" hspace="5" src="Untitled2_06.png" alt=""> <h2 id="9">Queremos resolver el siguiente sistema:</h2><h2 id="10">Primer problema sistema discreto</h2><p><img src="Untitled2_eq11954649434604064969.png" alt="$2y[n]+y[n+1]=2x[n-1]$"></p><p>Sustituimos n=n-1</p><p>Obtenemos <img src="Untitled2_eq13340432431767669030.png" alt="$2y[n-1]+y[n]=2x[n-2]$"></p><p>Donde <img src="Untitled2_eq07224420926790480916.png" alt="$y[-1]=3, x[n]=u[n], x[-n]=0$"> por ser causal.</p><pre class="codeinput">syms <span class="string">n</span>
+zeta2016a([2 1],[2],[3],[0],heaviside(n),5)
+<span class="comment">%</span>
+</pre><pre class="codeoutput"> 
+APLICAMOS TRANSFORMADA ZETA 
+ 
+Y(z) - 2 z y(0) + 2 z Y(z)
+
+=
+2 X(z)
+
+ 
+SUBSTITUIMOS CONDICIONES INICIALES
+ 
+Y(z) - 6 z + 2 z Y(z)
+
+=
+2 X(z)
+
+ 
+SUBSTITUIMOS LA TRANSFORMADA DE LA ENTRADA
+ 
+Y(z) - 6 z + 2 z Y(z)
+
+=
+  2
+----- + 2
+z - 1
+
+ 
+DESPEJAMOS Y(z)
+ 
+Y(z)=
+        2
+6 z + ----- + 2
+      z - 1
+---------------
+    2 z + 1
+
+ 
+DESARROLLAMOS LAS FRACCIONES PARCIALES DE Y(z)
+ 
+Y(z)=
+    2            7
+--------- - ----------- + 3
+3 (z - 1)   (2 z + 1) 3
+
+ 
+Aplicamos transformada inversa, asi la solucion es
+ 
+y(n)=
+  /   1 \n
+7 | - - |
+  \   2 /    2
+---------- + -
+     3       3
+
+</pre><img vspace="5" hspace="5" src="Untitled2_07.png" alt=""> <h2 id="11">Segundo problema sistema discreto</h2><p><img src="Untitled2_eq17638428425609042936.png" alt="$2y[n+2]-3y[n+1]+y[n]=4x[n+2]-3x[n+1]$"></p><p>Donde <img src="Untitled2_eq02779571769572658987.png" alt="$x[n]=(\frac{1}{4})^n u[n], y[-1]=0,y[-2]=1$"></p><p>Sustituimos n=n-2</p><p>Obtenemos <img src="Untitled2_eq08924211978304425958.png" alt="$2y[n]-3y[n-1]+y[n-2]=4x[n]-3x[n-1]$"></p><pre class="codeinput">syms <span class="string">n</span>
+zeta2016a([2 -3 1],[4 -3],[1 0],[0],heaviside(n),5)
+</pre><pre class="codeoutput"> 
+APLICAMOS TRANSFORMADA ZETA 
+ 
+          2                                            2
+Y(z) + 2 z  Y(z) + 3 z y(0) - 2 z y(1) - 3 z Y(z) - 2 z  y(0)
+
+=
+4 z X(z) - 4 z x(0) - 3 X(z)
+
+ 
+SUBSTITUIMOS CONDICIONES INICIALES
+ 
+                2
+Y(z) - 2 z + 2 z  Y(z) - 3 z Y(z)
+
+=
+4 z X(z) - 3 X(z)
+
+ 
+SUBSTITUIMOS LA TRANSFORMADA DE LA ENTRADA
+ 
+                2
+Y(z) - 2 z + 2 z  Y(z) - 3 z Y(z)
+
+=
+    /   1       \     3
+4 z | ----- + 1 | - ----- - 3
+    \ z - 1     /   z - 1
+
+ 
+DESPEJAMOS Y(z)
+ 
+Y(z)=
+            2
+       - 6 z  + 5 z
+- ---------------------
+     3      2
+  2 z  - 5 z  + 4 z - 1
+
+ 
+DESARROLLAMOS LAS FRACCIONES PARCIALES DE Y(z)
+ 
+Y(z)=
+  5         1         4
+----- + -------- - -------
+z - 1          2   2 z - 1
+        (z - 1)
+
+ 
+Aplicamos transformada inversa, asi la solucion es
+ 
+y(n)=
+      / 1 \n
+n - 4 | - |  + 4
+      \ 2 /
+
+</pre><img vspace="5" hspace="5" src="Untitled2_08.png" alt=""> <h2 id="12">Transferencia discreto</h2><pre class="codeinput">syms <span class="string">n</span>
+tanz([2 -3 1],[4 -3],[1 0],[0],heaviside(n),5)
+</pre><pre class="codeoutput"> 
+APLICAMOS TRANSFORMADA ZETA 
+ 
+          2                                            2
+Y(z) + 2 z  Y(z) + 3 z y(0) - 2 z y(1) - 3 z Y(z) - 2 z  y(0)
+
+=
+4 z X(z) - 4 z x(0) - 3 X(z)
+
+ 
+SUBSTITUIMOS CONDICIONES INICIALES
+ 
+                2
+Y(z) - 2 z + 2 z  Y(z) - 3 z Y(z)
+
+=
+4 z X(z) - 3 X(z)
+
+ 
+SUBSTITUIMOS LA TRANSFORMADA DE LA ENTRADA
+ 
+                2
+Y(z) - 2 z + 2 z  Y(z) - 3 z Y(z)
+
+=
+    /   1       \     3
+4 z | ----- + 1 | - ----- - 3
+    \ z - 1     /   z - 1
+
+ 
+DESPEJAMOS Y(z)
+ 
+Y(z)=
+            2
+       - 6 z  + 5 z
+- ---------------------
+     3      2
+  2 z  - 5 z  + 4 z - 1
+
+ 
+DESARROLLAMOS LAS FRACCIONES PARCIALES DE Y(z)
+ 
+Y(z)=
+  5         1         4
+----- + -------- - -------
+z - 1          2   2 z - 1
+        (z - 1)
+
+ 
+encontramos la Funcion de transferencia
+ 
+H(z)=
+ 
+H(z) =
+ 
+-(- 6*z^2 + 5*z)/(heaviside(n)*(2*z^3 - 5*z^2 + 4*z - 1))
+ 
+                   2
+              - 6 z  + 5 z
+- ------------------------------------
+                   3      2
+  heaviside(n) (2 z  - 5 z  + 4 z - 1)
+
+</pre><pre class="codeoutput error">Error using stem (line 40)
+Unable to convert expression into double array.
+
+Error in tanz (line 90)
+stem(tiempo,subs(H,n,tiempo),'r','LineWidth',2)
+
+Error in Untitled2 (line 90)
+tanz([2 -3 1],[4 -3],[1 0],[0],heaviside(n),5)
+</pre><h2 id="13">Apendice 1 Laplace</h2><p>function laplace2016a(a,b,ciy,xi,t0) a coeficientes de las derivadas de la salida menor a mayor [a_0, ..., a_n] b coeficientes de las derivadas de la entrada menor a mayor [b_0, ..., b_m] ciy condiciones iniciales de la salida de  menor a mayor [y(0), y(0)^(n-1)] xi funci&oacute;n de entrada en terminos de la variable simbolica t previamente declarada en el command window t0 tiempo final para graficar la solucion, la derivada, y la segunda derivada ejemplo: resolver y^(3)+y^(2)+2y^(1)+2y=3x^(2)-x^(1)+2x con y^(2)(0)=1 y^(1)=3 y(0)=2, x(t)=exp(-t)cos(t)u(t), para 10 segundos, se resuleve como syms t laplace2016a([2 2 1 1],[2 -1 3],[2 3 1],exp(-t)*cos(t)*heaviside(t),10) close all tam=size(a); tami=size(b); syms y(t) Y(s) x(t) X(s) Yy fp; syms edd edi edd=0; edi=0;</p><p>for i=1:tam(2)    edd=edd+a(i)*s^(i-1)*Y(s);    for k=1:i-1        edd=edd-a(i)*(s^(i-1-k)*ciy(k));    end end</p><p>for i=1:tami(2)    edi=edi+b(i)*s^(i-1)*X(s);    for k=1:i-1       edi=edi-b(i)*(s^(i-1-k)*cix(k));    end end mensaje('APLICAMOS TRANSFORMADA DE LAPLACE y subtituimos condiciones iniciales')</p><p>pretty(edd) disp('=') pretty(edi)</p><p>mensaje('SUBSTITUIMOS LA TRANSFORMADA DE LA ENTRADA')</p><p>edi=subs(edi,X(s), laplace(xi)); pretty(edd) disp('=') pretty(edi)</p><p>mensaje('DESPEJAMOS Y(s)')</p><p>edd=collect(edd,Y(s)); edd=subs(edd,Y(s),Yy); eq1=edd==edi; disp('Y(s)=') edd=solve(eq1, Yy); pretty(simplify(edd))</p><p>%% Para versiones superiores a 2016 mensaje('DESARROLLAMOS LAS FRACCIONES PARCIALES DE Y(s)') disp('Y(s)=') pretty(partfrac(edd)) %%% Si se ejecuta en 2015 o menor comentar las 3 lineas anteriores</p><p>mensaje('Aplicamos transformada inversa, asi la soluci&oacute;n es') disp('y(t)=') y(t)=ilaplace(edd); pretty(y(t))</p><p>dy(t)=diff(y,t); ddy(t)=diff(dy,t); figure (1) hFig = figure(1); set(hFig, 'Position', [0 0 900 900]) axes1 = axes('Parent',hFig,'FontWeight','bold','FontSize',16); tiempo=0:0.01:t0; subplot(2,1,1) fplot(xi,[0, t0],'b','LineWidth',2)</p><p>hold on fplot(y,[0,t0],'r','LineWidth',2)</p><p>legend('Entrada x(t)','Salida y(t)','Location','Best') xlabel('tiempo','FontWeight','bold','FontSize',16) title('Entrada y Respuesta del sistema','FontWeight','bold','FontSize',16) grid on subplot(2,1,2) fplot(dy,[0,t0],'g','LineWidth',2)</p><p>hold on title('Primera y segunda derivada de la salida','FontWeight','bold','FontSize',16) fplot(ddy,[0,t0],'m','LineWidth',2)</p><p>legend('dy(t)/dt','d^2y(t)/d^2t','Location','Best') xlabel('tiempo','FontWeight','bold','FontSize',16) grid on end</p><p>function mensaje(texto) disp( ' ') disp(texto) disp( ' ') end</p><h2 id="14">Apendice 2 Funcion de transferencia</h2><p>function transferencia(a,b,ciy,xi,t0) a coeficientes de las derivadas de la salida menor a mayor [a_0, ..., a_n] b coeficientes de las derivadas de la entrada menor a mayor [b_0, ..., b_m] ciy condiciones iniciales de la salida de  menor a mayor [y(0), y(0)^(n-1)] xi funci&oacute;n de entrada en terminos de la variable simbolica t previamente declarada en el command window close all tam=size(a); tami=size(b); syms y(t) Y(s) x(t) X(s) H(s) Yy fp; syms edd edi h edd=0; edi=0; la=0; h=0;</p><p>for i=1:tam(2)    edd=edd+a(i)*s^(i-1)*Y(s);    for k=1:i-1        edd=edd-a(i)*(s^(i-1-k)*ciy(k));    end end</p><p>for i=1:tami(2)    edi=edi+b(i)*s^(i-1)*X(s);    for k=1:i-1       edi=edi-b(i)*(s^(i-1-k)*cix(k));    end end mensaje('APLICAMOS TRANSFORMADA DE LAPLACE y subtituimos condiciones iniciales')</p><p>pretty(edd) disp('=') pretty(edi)</p><p>mensaje('SUBSTITUIMOS LA TRANSFORMADA DE LA ENTRADA')</p><p>edi=subs(edi,X(s), laplace(xi)); pretty(edd) disp('=') pretty(edi)</p><p>mensaje('DESPEJAMOS Y(s)')</p><p>edd=collect(edd,Y(s)); edd=subs(edd,Y(s),Yy); eq1=edd==edi; disp('Y(s)=') edd=solve(eq1, Yy); pretty(simplify(edd))</p><p>%% Para versiones superiores a 2016 mensaje('DESARROLLAMOS LAS FRACCIONES PARCIALES DE Y(s)') disp('Y(s)=') pretty(partfrac(edd)) %%% Si se ejecuta en 2015 o menor comentar las 3 lineas anteriores</p><p>mensaje('Una vez encontrada mi Y(S) Ahota encontraremos H(s)') disp('H(s)=') la= laplace(xi) H(s)=edd/la; pretty(H(s))</p><p>h=edd/la; figure (1) hFig = figure(1); set(hFig, 'Position', [0 0 900 900]) axes1 = axes('Parent',hFig,'FontWeight','bold','FontSize',16); tiempo=0:0.01:t0; subplot(2,1,1) fplot(xi,[0, t0],'b','LineWidth',2) xlabel('tiempo','FontWeight','bold','FontSize',16) title('Entrada del sistema','FontWeight','bold','FontSize',16) grid on subplot(2,1,2) title('Funcion de Transferencia','FontWeight','bold','FontSize',16) fplot(h,[0,t0],'m','LineWidth',2)</p><p>xlabel('tiempo','FontWeight','bold','FontSize',16) grid on end</p><p>function mensaje(texto) disp( ' ') disp(texto) disp( ' ') end</p><h2 id="15">Apendice 3 Entrada0</h2><p>function edo0(a,b,ciy,xi,t0) % a coeficientes de las derivadas de la salida menor a mayor [a_0, ..., a_n] % b coeficientes de las derivadas de la entrada menor a mayor [b_0, ..., b_m] % ciy condiciones iniciales de la salida de  menor a mayor [y(0), y(0)^(n-1)] % xi funci&oacute;n de entrada en terminos de la variable simbolica t previamente % declarada en el command window % t0 tiempo final para graficar la solucion, la derivada, y la segunda % derivada % ejemplo: resolver y^(3)+y^(2)+2y^(1)+2y=3x^(2)-x^(1)+2x con y^(2)(0)=1 y^(1)=3 % y(0)=2, x(t)=exp(-t)cos(t)u(t), para 10 segundos, se resuleve como % syms t % laplace2016a([2 2 1 1],[2 -1 3],[2 3 1],exp(-t)*cos(t)*heaviside(t),10) close all tam=size(a); tami=size(b); syms y(t) Y(s) x(t) X(s) Yy fp; syms edd edi edd=0; edi=0;</p><p>for i=1:tam(2)    edd=edd+a(i)*s^(i-1)*Y(s);    for k=1:i-1        edd=edd-a(i)*(s^(i-1-k)*ciy(k));    end end</p><p>for i=1:tami(2)    edi=edi+b(i)*s^(i-1)*X(s);    %for k=1:i-1      %  edi=edi-b(i)*(s^(i-1-k)*cix(k));    %end end mensaje('APLICAMOS TRANSFORMADA DE LAPLACE y subtituimos condiciones iniciales')</p><p>pretty(edd) disp('=') pretty(edi)</p><p>mensaje('SUBSTITUIMOS LA TRANSFORMADA DE LA ENTRADA')</p><p>edi=0 mensaje('DESPEJAMOS Y(s)')</p><p>edd=collect(edd,Y(s)); edd=subs(edd,Y(s),Yy); eq1=edd==edi; disp('Y(s)=') edd=solve(eq1, Yy); pretty(simplify(edd))</p><p>%%% Para versiones superiores a 2016 mensaje('DESARROLLAMOS LAS FRACCIONES PARCIALES DE Y(s)') disp('Y(s)=') pretty(partfrac(edd)) %%%% Si se ejecuta en 2015 o menor comentar las 3 lineas anteriores</p><p>mensaje('Aplicamos transformada inversa, asi la soluci&oacute;n es') disp('y(t)=') y(t)=ilaplace(edd); pretty(y(t))</p><p>dy(t)=diff(y,t); ddy(t)=diff(dy,t); figure (1) hFig = figure(1); set(hFig, 'Position', [0 0 900 900]) axes1 = axes('Parent',hFig,'FontWeight','bold','FontSize',16); tiempo=0:0.01:t0; subplot(2,1,1) fplot(xi,[0, t0],'b','LineWidth',2)</p><p>hold on fplot(y,[0,t0],'r','LineWidth',2)</p><p>legend('Entrada x(t)','Salida y(t)','Location','Best') xlabel('tiempo','FontWeight','bold','FontSize',16) title('Entrada y Respuesta del sistema','FontWeight','bold','FontSize',16) grid on subplot(2,1,2) fplot(dy,[0,t0],'g','LineWidth',2)</p><p>hold on title('Primera y segunda derivada de la salida','FontWeight','bold','FontSize',16) fplot(ddy,[0,t0],'m','LineWidth',2)</p><p>legend('dy(t)/dt','d^2y(t)/d^2t','Location','Best') xlabel('tiempo','FontWeight','bold','FontSize',16) grid on end</p><p>function mensaje(texto) disp( ' ') disp(texto) disp( ' ') end</p><h2 id="16">Apendice 4</h2><p>sympref('HeavisideAtOrigin', 1); %% Queremos resolver el siguiente sistema: % % <img src="Untitled2_eq11954649434604064969.png" alt="$2y[n]+y[n+1]=2x[n-1]$"> % % Sustituimos n=n-1 % % Obtenemos <img src="Untitled2_eq13340432431767669030.png" alt="$2y[n-1]+y[n]=2x[n-2]$"> % % Donde <img src="Untitled2_eq07224420926790480916.png" alt="$y[-1]=3, x[n]=u[n], x[-n]=0$"> por ser causal.</p><p>syms n zeta2016a([2 1],[2],[3],[0],heaviside(n),5) % function zeta2016a(a,b,ciy,cix,xi,n0)</p><p>close all tam=size(a); tami=size(b); syms y(n) n z Y(z) x(n) X(z) Yy fp; syms edd edi edd=0; edi=0;</p><p>for i=1:tam(2)    yd(i)=y(n+tam(2)-i);    edd=edd+ a(i)*ztrans(yd(i)); end</p><p>for i=1:tami(2)    xd(i)=x(n+tami(2)-i);    edi=edi+ b(i)*ztrans(xd(i)); end</p><p>mensaje('APLICAMOS TRANSFORMADA ZETA ')</p><p>edd=subs(edd,ztrans(y(n),n,z), Y(z)); edi=subs(edi,ztrans(x(n),n,z), X(z)); pretty(edd) disp('=') pretty(edi) mensaje('SUBSTITUIMOS CONDICIONES INICIALES')</p><p>for j=1:tami(2)-1 edi=subs(edi,x(tami(2)-1-j),cix(j)); end</p><p>for j=1:tam(2)-1 edd=subs(edd,y(tam(2)-1-j),ciy(j)); end</p><p>pretty(edd) disp('=') pretty(edi)</p><p>mensaje('SUBSTITUIMOS LA TRANSFORMADA DE LA ENTRADA')</p><p>edi=subs(edi,X(z), ztrans(xi)); pretty(edd) disp('=') pretty(edi)</p><p>mensaje('DESPEJAMOS Y(z)')</p><p>edd=collect(edd,Y(z)); edd=subs(edd,Y(z),Yy); eq1=edd==edi; disp('Y(z)=') edd=solve(eq1, Yy); pretty(edd)</p><p>mensaje('DESARROLLAMOS LAS FRACCIONES PARCIALES DE Y(z)') disp('Y(z)=') pretty(partfrac(edd))</p><p>mensaje('Aplicamos transformada inversa, asi la solucion es') disp('y(n)=') y(n)=iztrans(edd); pretty(y(n))</p><p>figure (1) hFig = figure(1); set(hFig, 'Position', [0 0 900 900]) axes1 = axes('Parent',hFig,'FontWeight','bold','FontSize',16); tiempo=0:1:n0; stem(tiempo,subs(xi,n,tiempo),'b','LineWidth',2) hold on stem(tiempo,subs(y(n),n,tiempo),'r','LineWidth',2) legend('Entrada x[n]','Salida y[n]','Location','Best') xlabel('tiempo','FontWeight','bold','FontSize',16) title('Solucion de la ecuacion en diferencias ','FontWeight','bold','FontSize',16) grid on end</p><p>function mensaje(texto) disp( ' ') disp(texto) disp( ' ') end</p><h2 id="17">tranferencia discreta</h2><p>function tanz(a,b,ciy,cix,xi,n0) % a coeficientes de las traslaciones de la salida mayor a menor [a_n, ..., a_0] % b coeficientes de las traslaciones de la entrada mayor a menor [b_m, ..., b_0] % ciy condiciones iniciales de la salida de mayor a menor [y(n-1), y(0)] % cix condiciones iniciales de la entrada de mayor a menor [x(m-1), x(0)] % xi funcion de entrada en terminos de la variable simbolica n previamente % declarada en el command window % n0 tiempo final para graficar la solucion, y la entrada % ejemplo: resolver %6y[n+2]+5y[n+1]+y[n]=x[n+1]+x[n] con y[1]=2 y[0]=1 %x[0]=0.5, x[n]=u[n], para 30 segundos, se resuleve como % syms n % zeta2016a([6 5 1],[ 1, 1],[2 1],[0.5],heaviside(n),30) close all tam=size(a); tami=size(b); syms y(n) n z Y(z) x(n) H(z) X(z) Yy fp; syms edd edi H edd=0; edi=0; la=0;</p><p>for i=1:tam(2)    yd(i)=y(n+tam(2)-i);    edd=edd+ a(i)*ztrans(yd(i)); end</p><p>for i=1:tami(2)    xd(i)=x(n+tami(2)-i);    edi=edi+ b(i)*ztrans(xd(i)); end</p><p>mensaje('APLICAMOS TRANSFORMADA ZETA ') edd=subs(edd,ztrans(y(n),n,z), Y(z)); edi=subs(edi,ztrans(x(n),n,z), X(z)); pretty(edd) disp('=') pretty(edi) mensaje('SUBSTITUIMOS CONDICIONES INICIALES')</p><p>for j=1:tami(2)-1 edi=subs(edi,x(tami(2)-1-j),cix(j)); end</p><p>for j=1:tam(2)-1 edd=subs(edd,y(tam(2)-1-j),ciy(j)); end</p><p>pretty(edd) disp('=') pretty(edi)</p><p>mensaje('SUBSTITUIMOS LA TRANSFORMADA DE LA ENTRADA')</p><p>edi=subs(edi,X(z), ztrans(xi)); pretty(edd) disp('=') pretty(edi)</p><p>mensaje('DESPEJAMOS Y(z)')</p><p>edd=collect(edd,Y(z)); edd=subs(edd,Y(z),Yy); eq1=edd==edi; disp('Y(z)=') edd=solve(eq1, Yy); pretty(edd)</p><p>%%% Para versiones superiores a 2016 mensaje('DESARROLLAMOS LAS FRACCIONES PARCIALES DE Y(z)') disp('Y(z)=') pretty(partfrac(edd)) %%%% Si se ejecuta en 2015 o menor comentar las 3 lineas anteriores</p><p>mensaje('encontramos la Funcion de transferencia') disp('H(z)=') la=ztrans(xi); H(z)=edd/xi pretty(H(z))</p><p>H=edd/xi; figure (1) hFig = figure(1); set(hFig, 'Position', [0 0 900 900]) axes1 = axes('Parent',hFig,'FontWeight','bold','FontSize',16); tiempo=0:1:n0; stem(tiempo,subs(xi,n,tiempo),'b','LineWidth',2) hold on stem(tiempo,subs(H,n,tiempo),'r','LineWidth',2) legend('Entrada x[n]','Salida y[n]','Location','Best') xlabel('tiempo','FontWeight','bold','FontSize',16) title('Solucion de la ecuacion en diferencias ','FontWeight','bold','FontSize',16) grid on end</p><p>function mensaje(texto) disp( ' ') disp(texto) disp( ' ') end</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% P06 Sistemas Diferenciales y en Diferencias 
+% 
+% INTEGRANTES:
+%
+% 
+% * Garcia Becerril Luis Angel Ian
+% * Rosales Perez Paola Monserrat 
+% * Betanzos Fernando Melvin Emiliano
+%% Objetivos:
+% Resolver sistemas diferenciales y en diferencias mediante un progama que
+% facilite los calculos dentro de matlab.
+%% Sistemas Diferneciales continuos
+%
+% De la ecuacion 
+% 
+% <<Imagen1.png>>
+% 
+% encuentre:
+% 
+% 1 Muestra la función de transferencia del sistema
+%
+% 2 Muestra la respuesta al impulso (simbólico, gráfica)
+%
+% 3 Muestra la respuesta a entrada cero (simbólico, gráfica)
+%
+% 4 Muestra la respuesta a estado cero (simbólico, gráfica)
+% 
+% 5 Muestra la respuesta total (simbólico, gráfica)
+% 
+% 6 La respuesta total al escalón con condiciones iniciales 0 (simbólico, gráfica)
+% 
+% 7 Usando subplot, depliega una figura con 5 gráficas
+%% 1.1 
+% Muestra la función de transferencia del sistema
+x = cos(2*t)
+transferencia([3,2,1],[-1 1],[0 1],x,10)
+%% 1.2  
+% Muestra la respuesta al impulso (simbólico, gráfica)
+syms t
+laplace2016a([3,2,1],[-1 1],[0 1],heaviside(t),10)
+%% 1.3 
+% Muestra la respuesta a entrada cero (simbólico, gráfica)
+syms t
+x = cos(2*t)
+edo0([3,2,1],[-1 1],[0 1],0,10)
+%% 1.4
+% Muestra la respuesta a estado cero (simbólico, gráfica)
+syms t
+x = cos(2*t)
+laplace2016a([3,2,1],[-1 1],[0 0],x,10)
+%% 1.5 
+%  Muestra la respuesta total (simbólico, gráfica)
+syms t
+x = cos(2*t)
+laplace2016a([3,2,1],[-1 1],[0 1],x,10)
+%% 1.6 
+% La respuesta total al escalón con condiciones iniciales 0 (simbólico, gráfica)
+syms t
+laplace2016a([3,2,1],[-1,1],[0 1],heaviside(t),10)
+sympref('HeavisideAtOrigin', 1);
+%% Queremos resolver el siguiente sistema: 
+%% Primer problema sistema discreto
+% $2y[n]+y[n+1]=2x[n-1]$
+%
+% Sustituimos n=n-1
+%
+% Obtenemos $2y[n-1]+y[n]=2x[n-2]$
+%
+% Donde $y[-1]=3, x[n]=u[n], x[-n]=0$ por ser causal.
+
+syms n
+zeta2016a([2 1],[2],[3],[0],heaviside(n),5)
+%
+%% Segundo problema sistema discreto
+%
+% $2y[n+2]-3y[n+1]+y[n]=4x[n+2]-3x[n+1]$
+%
+% Donde $x[n]=(\frac{1}{4})^n u[n], y[-1]=0,y[-2]=1$
+%
+% Sustituimos n=n-2
+%
+% Obtenemos $2y[n]-3y[n-1]+y[n-2]=4x[n]-3x[n-1]$
+%
+
+
+syms n
+zeta2016a([2 -3 1],[4 -3],[1 0],[0],heaviside(n),5)
+%% Transferencia discreto
+syms n
+tanz([2 -3 1],[4 -3],[1 0],[0],heaviside(n),5)
+%% Apendice 1 Laplace
+% function laplace2016a(a,b,ciy,xi,t0)
+% a coeficientes de las derivadas de la salida menor a mayor [a_0, ..., a_n]
+% b coeficientes de las derivadas de la entrada menor a mayor [b_0, ..., b_m]
+% ciy condiciones iniciales de la salida de  menor a mayor [y(0), y(0)^(n-1)]
+% xi función de entrada en terminos de la variable simbolica t previamente
+% declarada en el command window
+% t0 tiempo final para graficar la solucion, la derivada, y la segunda 
+% derivada 
+% ejemplo: resolver y^(3)+y^(2)+2y^(1)+2y=3x^(2)-x^(1)+2x con y^(2)(0)=1 y^(1)=3
+% y(0)=2, x(t)=exp(-t)cos(t)u(t), para 10 segundos, se resuleve como
+% syms t
+% laplace2016a([2 2 1 1],[2 -1 3],[2 3 1],exp(-t)*cos(t)*heaviside(t),10)
+% close all
+% tam=size(a);
+% tami=size(b);
+% syms y(t) Y(s) x(t) X(s) Yy fp;
+% syms edd edi 
+% edd=0;
+% edi=0;
+% 
+% for i=1:tam(2)
+%    edd=edd+a(i)*s^(i-1)*Y(s);
+%    for k=1:i-1
+%        edd=edd-a(i)*(s^(i-1-k)*ciy(k));
+%    end
+% end
+% 
+% for i=1:tami(2)
+%    edi=edi+b(i)*s^(i-1)*X(s);
+%    for k=1:i-1
+%       edi=edi-b(i)*(s^(i-1-k)*cix(k));
+%    end
+% end
+% mensaje('APLICAMOS TRANSFORMADA DE LAPLACE y subtituimos condiciones iniciales')
+% 
+% pretty(edd)
+% disp('=')
+% pretty(edi)
+% 
+% mensaje('SUBSTITUIMOS LA TRANSFORMADA DE LA ENTRADA')
+% 
+% edi=subs(edi,X(s), laplace(xi));
+% pretty(edd)
+% disp('=')
+% pretty(edi)
+% 
+% mensaje('DESPEJAMOS Y(s)')
+% 
+% edd=collect(edd,Y(s));
+% edd=subs(edd,Y(s),Yy);
+% eq1=edd==edi;
+% disp('Y(s)=')
+% edd=solve(eq1, Yy);
+% pretty(simplify(edd))
+% 
+% %% Para versiones superiores a 2016
+% mensaje('DESARROLLAMOS LAS FRACCIONES PARCIALES DE Y(s)')
+% disp('Y(s)=')
+% pretty(partfrac(edd))
+% %%% Si se ejecuta en 2015 o menor comentar las 3 lineas anteriores
+% 
+% mensaje('Aplicamos transformada inversa, asi la solución es')
+% disp('y(t)=')
+% y(t)=ilaplace(edd);
+% pretty(y(t))
+% 
+% dy(t)=diff(y,t);
+% ddy(t)=diff(dy,t);
+% figure (1)
+% hFig = figure(1);
+% set(hFig, 'Position', [0 0 900 900])
+% axes1 = axes('Parent',hFig,'FontWeight','bold','FontSize',16);
+% tiempo=0:0.01:t0;
+% subplot(2,1,1)
+% fplot(xi,[0, t0],'b','LineWidth',2)
+% 
+% hold on
+% fplot(y,[0,t0],'r','LineWidth',2)
+% 
+% legend('Entrada x(t)','Salida y(t)','Location','Best')
+% xlabel('tiempo','FontWeight','bold','FontSize',16)
+% title('Entrada y Respuesta del sistema','FontWeight','bold','FontSize',16)
+% grid on
+% subplot(2,1,2)
+% fplot(dy,[0,t0],'g','LineWidth',2)
+% 
+% hold on
+% title('Primera y segunda derivada de la salida','FontWeight','bold','FontSize',16)
+% fplot(ddy,[0,t0],'m','LineWidth',2)
+% 
+% legend('dy(t)/dt','d^2y(t)/d^2t','Location','Best')
+% xlabel('tiempo','FontWeight','bold','FontSize',16)
+% grid on
+% end
+% 
+% function mensaje(texto)
+% disp( ' ')
+% disp(texto)
+% disp( ' ')
+% end
+%% Apendice 2 Funcion de transferencia
+% function transferencia(a,b,ciy,xi,t0)
+% a coeficientes de las derivadas de la salida menor a mayor [a_0, ..., a_n]
+% b coeficientes de las derivadas de la entrada menor a mayor [b_0, ..., b_m]
+% ciy condiciones iniciales de la salida de  menor a mayor [y(0), y(0)^(n-1)]
+% xi función de entrada en terminos de la variable simbolica t previamente
+% declarada en el command window
+% close all
+% tam=size(a);
+% tami=size(b);
+% syms y(t) Y(s) x(t) X(s) H(s) Yy fp;
+% syms edd edi h
+% edd=0;
+% edi=0;
+% la=0;
+% h=0;
+% 
+% for i=1:tam(2)
+%    edd=edd+a(i)*s^(i-1)*Y(s);
+%    for k=1:i-1
+%        edd=edd-a(i)*(s^(i-1-k)*ciy(k));
+%    end
+% end
+% 
+% for i=1:tami(2)
+%    edi=edi+b(i)*s^(i-1)*X(s);
+%    for k=1:i-1
+%       edi=edi-b(i)*(s^(i-1-k)*cix(k));
+%    end
+% end
+% mensaje('APLICAMOS TRANSFORMADA DE LAPLACE y subtituimos condiciones iniciales')
+% 
+% pretty(edd)
+% disp('=')
+% pretty(edi)
+% 
+% mensaje('SUBSTITUIMOS LA TRANSFORMADA DE LA ENTRADA')
+% 
+% edi=subs(edi,X(s), laplace(xi));
+% pretty(edd)
+% disp('=')
+% pretty(edi)
+% 
+% mensaje('DESPEJAMOS Y(s)')
+% 
+% edd=collect(edd,Y(s));
+% edd=subs(edd,Y(s),Yy);
+% eq1=edd==edi;
+% disp('Y(s)=')
+% edd=solve(eq1, Yy);
+% pretty(simplify(edd))
+% 
+% %% Para versiones superiores a 2016
+% mensaje('DESARROLLAMOS LAS FRACCIONES PARCIALES DE Y(s)')
+% disp('Y(s)=')
+% pretty(partfrac(edd))
+% %%% Si se ejecuta en 2015 o menor comentar las 3 lineas anteriores
+% 
+% mensaje('Una vez encontrada mi Y(S) Ahota encontraremos H(s)')
+% disp('H(s)=')
+% la= laplace(xi)
+% H(s)=edd/la;
+% pretty(H(s))
+% 
+% h=edd/la;
+% figure (1)
+% hFig = figure(1);
+% set(hFig, 'Position', [0 0 900 900])
+% axes1 = axes('Parent',hFig,'FontWeight','bold','FontSize',16);
+% tiempo=0:0.01:t0;
+% subplot(2,1,1)
+% fplot(xi,[0, t0],'b','LineWidth',2)
+% xlabel('tiempo','FontWeight','bold','FontSize',16)
+% title('Entrada del sistema','FontWeight','bold','FontSize',16)
+% grid on
+% subplot(2,1,2)
+% title('Funcion de Transferencia','FontWeight','bold','FontSize',16)
+% fplot(h,[0,t0],'m','LineWidth',2)
+% 
+% xlabel('tiempo','FontWeight','bold','FontSize',16)
+% grid on
+% end
+% 
+% function mensaje(texto)
+% disp( ' ')
+% disp(texto)
+% disp( ' ')
+% end
+%% Apendice 3 Entrada0
+% function edo0(a,b,ciy,xi,t0)
+% % a coeficientes de las derivadas de la salida menor a mayor [a_0, ..., a_n]
+% % b coeficientes de las derivadas de la entrada menor a mayor [b_0, ..., b_m]
+% % ciy condiciones iniciales de la salida de  menor a mayor [y(0), y(0)^(n-1)]
+% % xi función de entrada en terminos de la variable simbolica t previamente
+% % declarada en el command window
+% % t0 tiempo final para graficar la solucion, la derivada, y la segunda 
+% % derivada 
+% % ejemplo: resolver y^(3)+y^(2)+2y^(1)+2y=3x^(2)-x^(1)+2x con y^(2)(0)=1 y^(1)=3
+% % y(0)=2, x(t)=exp(-t)cos(t)u(t), para 10 segundos, se resuleve como
+% % syms t
+% % laplace2016a([2 2 1 1],[2 -1 3],[2 3 1],exp(-t)*cos(t)*heaviside(t),10)
+% close all
+% tam=size(a);
+% tami=size(b);
+% syms y(t) Y(s) x(t) X(s) Yy fp;
+% syms edd edi 
+% edd=0;
+% edi=0;
+% 
+% for i=1:tam(2)
+%    edd=edd+a(i)*s^(i-1)*Y(s);
+%    for k=1:i-1
+%        edd=edd-a(i)*(s^(i-1-k)*ciy(k));
+%    end
+% end
+% 
+% for i=1:tami(2)
+%    edi=edi+b(i)*s^(i-1)*X(s);
+%    %for k=1:i-1
+%      %  edi=edi-b(i)*(s^(i-1-k)*cix(k));
+%    %end
+% end
+% mensaje('APLICAMOS TRANSFORMADA DE LAPLACE y subtituimos condiciones iniciales')
+% 
+% pretty(edd)
+% disp('=')
+% pretty(edi)
+% 
+% mensaje('SUBSTITUIMOS LA TRANSFORMADA DE LA ENTRADA')
+% 
+% edi=0
+% mensaje('DESPEJAMOS Y(s)')
+% 
+% edd=collect(edd,Y(s));
+% edd=subs(edd,Y(s),Yy);
+% eq1=edd==edi;
+% disp('Y(s)=')
+% edd=solve(eq1, Yy);
+% pretty(simplify(edd))
+% 
+% %%% Para versiones superiores a 2016
+% mensaje('DESARROLLAMOS LAS FRACCIONES PARCIALES DE Y(s)')
+% disp('Y(s)=')
+% pretty(partfrac(edd))
+% %%%% Si se ejecuta en 2015 o menor comentar las 3 lineas anteriores
+% 
+% mensaje('Aplicamos transformada inversa, asi la solución es')
+% disp('y(t)=')
+% y(t)=ilaplace(edd);
+% pretty(y(t))
+% 
+% dy(t)=diff(y,t);
+% ddy(t)=diff(dy,t);
+% figure (1)
+% hFig = figure(1);
+% set(hFig, 'Position', [0 0 900 900])
+% axes1 = axes('Parent',hFig,'FontWeight','bold','FontSize',16);
+% tiempo=0:0.01:t0;
+% subplot(2,1,1)
+% fplot(xi,[0, t0],'b','LineWidth',2)
+% 
+% hold on
+% fplot(y,[0,t0],'r','LineWidth',2)
+% 
+% legend('Entrada x(t)','Salida y(t)','Location','Best')
+% xlabel('tiempo','FontWeight','bold','FontSize',16)
+% title('Entrada y Respuesta del sistema','FontWeight','bold','FontSize',16)
+% grid on
+% subplot(2,1,2)
+% fplot(dy,[0,t0],'g','LineWidth',2)
+% 
+% hold on
+% title('Primera y segunda derivada de la salida','FontWeight','bold','FontSize',16)
+% fplot(ddy,[0,t0],'m','LineWidth',2)
+% 
+% legend('dy(t)/dt','d^2y(t)/d^2t','Location','Best')
+% xlabel('tiempo','FontWeight','bold','FontSize',16)
+% grid on
+% end
+% 
+% function mensaje(texto)
+% disp( ' ')
+% disp(texto)
+% disp( ' ')
+% end
+%% Apendice 4 
+% sympref('HeavisideAtOrigin', 1);
+% %% Queremos resolver el siguiente sistema: 
+% %
+% % $2y[n]+y[n+1]=2x[n-1]$
+% %
+% % Sustituimos n=n-1
+% %
+% % Obtenemos $2y[n-1]+y[n]=2x[n-2]$
+% %
+% % Donde $y[-1]=3, x[n]=u[n], x[-n]=0$ por ser causal.
+% 
+% syms n
+% zeta2016a([2 1],[2],[3],[0],heaviside(n),5)
+% %
+% function zeta2016a(a,b,ciy,cix,xi,n0)
+% 
+% close all
+% tam=size(a);
+% tami=size(b);
+% syms y(n) n z Y(z) x(n) X(z) Yy fp;
+% syms edd edi
+% edd=0;
+% edi=0;
+% 
+% for i=1:tam(2)
+%    yd(i)=y(n+tam(2)-i);
+%    edd=edd+ a(i)*ztrans(yd(i));   
+% end
+% 
+% 
+% for i=1:tami(2)
+%    xd(i)=x(n+tami(2)-i);
+%    edi=edi+ b(i)*ztrans(xd(i));   
+% end
+% 
+% mensaje('APLICAMOS TRANSFORMADA ZETA ')
+% 
+% edd=subs(edd,ztrans(y(n),n,z), Y(z));
+% edi=subs(edi,ztrans(x(n),n,z), X(z));
+% pretty(edd)
+% disp('=')
+% pretty(edi)
+% mensaje('SUBSTITUIMOS CONDICIONES INICIALES')
+% 
+% for j=1:tami(2)-1
+% edi=subs(edi,x(tami(2)-1-j),cix(j));
+% end
+% 
+% for j=1:tam(2)-1
+% edd=subs(edd,y(tam(2)-1-j),ciy(j));
+% end
+% 
+% pretty(edd)
+% disp('=')
+% pretty(edi)
+% 
+% mensaje('SUBSTITUIMOS LA TRANSFORMADA DE LA ENTRADA')
+% 
+% edi=subs(edi,X(z), ztrans(xi));
+% pretty(edd)
+% disp('=')
+% pretty(edi)
+% 
+% mensaje('DESPEJAMOS Y(z)')
+% 
+% edd=collect(edd,Y(z));
+% edd=subs(edd,Y(z),Yy);
+% eq1=edd==edi;
+% disp('Y(z)=')
+% edd=solve(eq1, Yy);
+% pretty(edd)
+% 
+% 
+% mensaje('DESARROLLAMOS LAS FRACCIONES PARCIALES DE Y(z)')
+% disp('Y(z)=')
+% pretty(partfrac(edd))
+% 
+% 
+% mensaje('Aplicamos transformada inversa, asi la solucion es')
+% disp('y(n)=')
+% y(n)=iztrans(edd);
+% pretty(y(n))
+% 
+% figure (1)
+% hFig = figure(1);
+% set(hFig, 'Position', [0 0 900 900])
+% axes1 = axes('Parent',hFig,'FontWeight','bold','FontSize',16);
+% tiempo=0:1:n0;
+% stem(tiempo,subs(xi,n,tiempo),'b','LineWidth',2)
+% hold on
+% stem(tiempo,subs(y(n),n,tiempo),'r','LineWidth',2)
+% legend('Entrada x[n]','Salida y[n]','Location','Best')
+% xlabel('tiempo','FontWeight','bold','FontSize',16)
+% title('Solucion de la ecuacion en diferencias ','FontWeight','bold','FontSize',16)
+% grid on
+% end
+% 
+% function mensaje(texto)
+% disp( ' ')
+% disp(texto)
+% disp( ' ')
+% end
+%% tranferencia discreta
+% function tanz(a,b,ciy,cix,xi,n0)
+% % a coeficientes de las traslaciones de la salida mayor a menor [a_n, ..., a_0]
+% % b coeficientes de las traslaciones de la entrada mayor a menor [b_m, ..., b_0]
+% % ciy condiciones iniciales de la salida de mayor a menor [y(n-1), y(0)]
+% % cix condiciones iniciales de la entrada de mayor a menor [x(m-1), x(0)]
+% % xi funcion de entrada en terminos de la variable simbolica n previamente
+% % declarada en el command window
+% % n0 tiempo final para graficar la solucion, y la entrada
+% % ejemplo: resolver 
+% %6y[n+2]+5y[n+1]+y[n]=x[n+1]+x[n] con y[1]=2 y[0]=1
+% %x[0]=0.5, x[n]=u[n], para 30 segundos, se resuleve como
+% % syms n
+% % zeta2016a([6 5 1],[ 1, 1],[2 1],[0.5],heaviside(n),30)
+% close all
+% tam=size(a);
+% tami=size(b);
+% syms y(n) n z Y(z) x(n) H(z) X(z) Yy fp;
+% syms edd edi H
+% edd=0;
+% edi=0;
+% la=0;
+% 
+% for i=1:tam(2)
+%    yd(i)=y(n+tam(2)-i);
+%    edd=edd+ a(i)*ztrans(yd(i));   
+% end
+% 
+% 
+% for i=1:tami(2)
+%    xd(i)=x(n+tami(2)-i);
+%    edi=edi+ b(i)*ztrans(xd(i));   
+% end
+% 
+% mensaje('APLICAMOS TRANSFORMADA ZETA ')
+% edd=subs(edd,ztrans(y(n),n,z), Y(z));
+% edi=subs(edi,ztrans(x(n),n,z), X(z));
+% pretty(edd)
+% disp('=')
+% pretty(edi)
+% mensaje('SUBSTITUIMOS CONDICIONES INICIALES')
+% 
+% for j=1:tami(2)-1
+% edi=subs(edi,x(tami(2)-1-j),cix(j));
+% end
+% 
+% for j=1:tam(2)-1
+% edd=subs(edd,y(tam(2)-1-j),ciy(j));
+% end
+% 
+% pretty(edd)
+% disp('=')
+% pretty(edi)
+% 
+% mensaje('SUBSTITUIMOS LA TRANSFORMADA DE LA ENTRADA')
+% 
+% edi=subs(edi,X(z), ztrans(xi));
+% pretty(edd)
+% disp('=')
+% pretty(edi)
+% 
+% mensaje('DESPEJAMOS Y(z)')
+% 
+% edd=collect(edd,Y(z));
+% edd=subs(edd,Y(z),Yy);
+% eq1=edd==edi;
+% disp('Y(z)=')
+% edd=solve(eq1, Yy);
+% pretty(edd)
+% 
+% %%% Para versiones superiores a 2016
+% mensaje('DESARROLLAMOS LAS FRACCIONES PARCIALES DE Y(z)')
+% disp('Y(z)=')
+% pretty(partfrac(edd))
+% %%%% Si se ejecuta en 2015 o menor comentar las 3 lineas anteriores
+% 
+% mensaje('encontramos la Funcion de transferencia')
+% disp('H(z)=')
+% la=ztrans(xi);
+% H(z)=edd/xi
+% pretty(H(z))
+% 
+% H=edd/xi;
+% figure (1)
+% hFig = figure(1);
+% set(hFig, 'Position', [0 0 900 900])
+% axes1 = axes('Parent',hFig,'FontWeight','bold','FontSize',16);
+% tiempo=0:1:n0;
+% stem(tiempo,subs(xi,n,tiempo),'b','LineWidth',2)
+% hold on
+% stem(tiempo,subs(H,n,tiempo),'r','LineWidth',2)
+% legend('Entrada x[n]','Salida y[n]','Location','Best')
+% xlabel('tiempo','FontWeight','bold','FontSize',16)
+% title('Solucion de la ecuacion en diferencias ','FontWeight','bold','FontSize',16)
+% grid on
+% end
+% 
+% function mensaje(texto)
+% disp( ' ')
+% disp(texto)
+% disp( ' ')
+% end
+
+##### SOURCE END #####
+--></body></html>
